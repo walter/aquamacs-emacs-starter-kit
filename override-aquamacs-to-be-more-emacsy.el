@@ -20,3 +20,5 @@
   (let ((one-buffer-one-frame t))
     (close-current-window-asktosave)))
 (define-key osx-key-mode-map (kbd "A-w") 'my-close-current-window-asktosave)
+
+(provide 'override-aquamacs-to-be-more-emacsy)

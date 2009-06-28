@@ -9,3 +9,5 @@
 ;; http://github.com/walter/aquamacs-emacs-starter-kit
 
 (setenv "PATH" (concat "/opt/ree-latest/bin" ":" (getenv "PATH") "/opt/local/bin" ":" ))
+
+(provide 'adjust-path)

@@ -9,3 +9,5 @@
 ;; file types that are ruby
 (add-to-list 'auto-mode-alist '(".rjs$" . ruby-mode))
 (add-to-list 'auto-mode-alist '(".rxml$" . ruby-mode))
+
+(provide 'misc-mode-tweaks)
