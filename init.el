@@ -24,9 +24,15 @@
 
 ;; Load up ELPA, the package manager
 
-;(require 'package)
-;(package-initialize)
-;(require 'starter-kit-elpa)
+;; test that ~/.emacs.d
+;; and ~/.emacs.d/elpa/ exist
+;; make them if not
+(unless (file-directory-p "~/.emacs.d/elpa")
+	    (make-directory "~/.emacs.d/elpa" t))
+
+(require 'package)
+(package-initialize)
+(require 'starter-kit-elpa)
 
 ;;;;; Vendor libs
 

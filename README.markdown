@@ -32,7 +32,7 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 </pre>
 
 * optionally set a theme by altering appearance.el to specify either an Aquamacs bundled theme or one included in this kit
-* restart Aquamacs
+* restart Aquamacs -- Note: you may have to do this more than once to get all the ELPA packages downloaded and compiled
 
 ## TODO and Scratch:
 
@@ -41,7 +41,8 @@ elpa
         css-mode --handled by aquamacs
         gist
         javascript --handled by aquqmacs
-        magit
+        magit --additional git goodness
+	paredit --for lisp
         rinari --? support for ri built in?
         w3
         yasnippet-bundle -- grab snippets from topfunky?
