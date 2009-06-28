@@ -31,6 +31,7 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 </code>
 </pre>
 
+* optionally set a theme by altering appearance.el to specify either an Aquamacs bundled theme or one included in this kit
 * restart Aquamacs
 
 ## TODO and Scratch:
@@ -62,8 +63,8 @@ vendor -- add under ~/Library/Preferences/Aquamacs Emacs/?
 color-theme already supported in Aquamacs
             set up preferred theme on load --blackboard
             investigate twilight
-       color themes
-       simple green on black
+       color themes --done
+       simple green on black --done
 rinari config
       tags for projects
 
