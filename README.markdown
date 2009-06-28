@@ -22,15 +22,15 @@ elpa
         rinari --? support for ri built in?
         w3
         yasnippet-bundle -- grab snippets from topfunky?
-Break Preferences.el into logical files
+Break Preferences.el into logical files -- known stuff done
 vendor -- add under ~/Library/Preferences/Aquamacs Emacs/?
-       applescript-mode
-       line-num
-       objc-c-mode.el
-       xcode.el
-       yaml-mode
-       htmlize
-       whitespace
+       applescript-mode --done
+       line-num --done
+       objc-c-mode.el --done
+       xcode.el --done
+       yaml-mode --done
+       htmlize -- use nxHtml instead as htmlize is not currently compatible with emacs 23
+       whitespace --done
        textmate hooks that open file in emacs?
        pull some from starter-kit-defuns.el
        starter-kit-elpa
