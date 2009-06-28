@@ -70,6 +70,7 @@
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
 (require 'adjust-path)
 (require 'appearance)
+(require 'ido-setup)
 (require 'misc-mode-tweaks)
 (require 'prefer-utf)
 (require 'override-aquamacs-to-be-more-emacsy)

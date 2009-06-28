@@ -36,7 +36,7 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 
 ## TODO and Scratch:
 
-enable ido
+enable ido -- done with logical file
 elpa
         css-mode --handled by aquamacs
         gist
