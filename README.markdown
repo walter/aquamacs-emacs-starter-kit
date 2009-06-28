@@ -11,6 +11,24 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 * use vendor directory for third party code that isn't available any other way
 * use ~/Library/Preferences/Aquamacs Emacs/kit/ for Aquamacs Emacs Starter Kit specific code
 
+## Install
+
+* cd ~/Library/Preferences/Aquamacs Emacs/
+* git clone git@github.com:walter/aquamacs-emacs-starter-kit.git
+* add the following to ~/Library/Preferences/Aquamacs Emacs/Preferences.el
+
+;; Aquamacs Emacs Starter Kit
+;; http://github.com/walter/aquamacs-emacs-starter-kit
+;; set the dotfiles-dir variable to this directory
+(setq kitfiles-dir (concat (file-name-directory
+                    (or (buffer-file-name) load-file-name)) "/aquamacs-emacs-starter-kit"))
+
+;; set up our various directories to load
+(add-to-list 'load-path kitfiles-dir)
+(require 'init)
+
+* restart Aquamacs
+
 ## TODO and Scratch:
 
 enable ido
