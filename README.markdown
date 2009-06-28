@@ -17,6 +17,8 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 * git clone git@github.com:walter/aquamacs-emacs-starter-kit.git
 * add the following to ~/Library/Preferences/Aquamacs Emacs/Preferences.el
 
+<pre>
+<code>
 ;; Aquamacs Emacs Starter Kit
 ;; http://github.com/walter/aquamacs-emacs-starter-kit
 ;; set the dotfiles-dir variable to this directory
@@ -26,6 +28,8 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 ;; set up our various directories to load
 (add-to-list 'load-path kitfiles-dir)
 (require 'init)
+</code>
+</pre>
 
 * restart Aquamacs
 
