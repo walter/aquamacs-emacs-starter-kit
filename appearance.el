@@ -14,5 +14,12 @@
         (foreground-color . "green")
         ))
 
+;; set up color theme of choice by uncommenting the one you want
+(require 'color-theme)
+(color-theme-initialize)
+; (load-file (concat kitfiles-dir "/vendor" "/twilight.el"))
+; (color-theme-twilight)
+; (load-file (concat kitfiles-dir "/vendor" "/blackboard.el"))
+; (color-theme-blackboard)
 
 (provide 'appearance)

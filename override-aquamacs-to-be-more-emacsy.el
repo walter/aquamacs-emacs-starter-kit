@@ -21,4 +21,7 @@
     (close-current-window-asktosave)))
 (define-key osx-key-mode-map (kbd "A-w") 'my-close-current-window-asktosave)
 
+; get rid of the unnecessary menu bar, since you should be using your keyboard
+(tool-bar-mode 0)
+
 (provide 'override-aquamacs-to-be-more-emacsy)

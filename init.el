@@ -63,9 +63,11 @@
 
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
 (require 'adjust-path)
+(require 'appearance)
 (require 'misc-mode-tweaks)
 (require 'prefer-utf)
 (require 'override-aquamacs-to-be-more-emacsy)
+(require 'useful-functions)
 
 ;;;;; end Aquamacs Emacs Starter Kit specific customizations
 

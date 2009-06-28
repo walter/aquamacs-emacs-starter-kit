@@ -37,9 +37,9 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 
 enable ido
 elpa
-        css-mode
+        css-mode --handled by aquamacs
         gist
-        javascript or js2-mode (see what works with rinari)
+        javascript --handled by aquqmacs
         magit
         rinari --? support for ri built in?
         w3
@@ -54,15 +54,16 @@ vendor -- add under ~/Library/Preferences/Aquamacs Emacs/?
        htmlize -- use nxHtml instead as htmlize is not currently compatible with emacs 23
        whitespace --done
        textmate hooks that open file in emacs?
-       pull some from starter-kit-defuns.el
+       pull some from starter-kit-defuns.el --done
        starter-kit-elpa
        pull file ->  mode, nxhtml set up, ido setup from
-       starter-kit-misc if necessary
+       starter-kit-misc if necessary --not really anything that is necessary with aquamacs, except toolbar-mode being turned off
        starter-kit-ruby ri config if necessary
 color-theme already supported in Aquamacs
             set up preferred theme on load --blackboard
             investigate twilight
-
+       color themes
+       simple green on black
 rinari config
       tags for projects
 
