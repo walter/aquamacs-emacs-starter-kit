@@ -1,400 +1,378 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head><title>EmacsWiki: whitespace.el</title><link rel="alternate" type="application/wiki" title="Edit this page" href="http://www.emacswiki.org/emacs?action=edit;id=whitespace.el" /><link type="text/css" rel="stylesheet" href="/emacs/wiki.css" /><meta name="robots" content="INDEX,FOLLOW" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="http://www.emacswiki.org/emacs?action=rss" /><link rel="alternate" type="application/rss+xml" title="EmacsWiki: whitespace.el" href="http://www.emacswiki.org/emacs?action=rss;rcidonly=whitespace.el" />
-<link rel="alternate" type="application/rss+xml"
-      title="Emacs Wiki with page content"
-      href="http://www.emacswiki.org/emacs/full.rss" />
-<link rel="alternate" type="application/rss+xml"
-      title="Emacs Wiki with page content and diff"
-      href="http://www.emacswiki.org/emacs/full-diff.rss" />
-<link rel="alternate" type="application/rss+xml"
-      title="Emacs Wiki including minor differences"
-      href="http://www.emacswiki.org/emacs/minor-edits.rss" />
-<link rel="alternate" type="application/rss+xml"
-      title="Changes for whitespace.el only"
-      href="http://www.emacswiki.org/emacs?action=rss;rcidonly=whitespace.el" /><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head><body class="http://www.emacswiki.org/emacs"><div class="header"><a class="logo" href="http://www.emacswiki.org/emacs/SiteMap"><img class="logo" src="/emacs_logo.png" alt="[Home]" /></a><span class="gotobar bar"><a class="local" href="http://www.emacswiki.org/emacs/SiteMap">SiteMap</a> <a class="local" href="http://www.emacswiki.org/emacs/Search">Search</a> <a class="local" href="http://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a class="local" href="http://www.emacswiki.org/emacs/HowTo">HowTo</a> <a class="local" href="http://www.emacswiki.org/emacs/RecentChanges">RecentChanges</a> <a class="local" href="http://www.emacswiki.org/emacs/News">News</a> <a class="local" href="http://www.emacswiki.org/emacs/Problems">Problems</a> <a class="local" href="http://www.emacswiki.org/emacs/Suggestions">Suggestions</a> </span>
-<!-- Google CSE Search Box Begins  -->
-<form class="tiny" action="http://www.google.com/cse" id="searchbox_004774160799092323420:6-ff2s0o6yi"><p>
-<input type="hidden" name="cx" value="004774160799092323420:6-ff2s0o6yi" />
-<input type="text" name="q" size="25" />
-<input type="submit" name="sa" value="Search" />
-</p></form>
-<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=searchbox_004774160799092323420%3A6-ff2s0o6yi"></script>
-<!-- Google CSE Search Box Ends -->
-<h1><a title="Click to search for references to this page" rel="nofollow" href="http://www.google.com/cse?cx=004774160799092323420:6-ff2s0o6yi&amp;q=%22whitespace.el%22">whitespace.el</a></h1></div><div class="wrapper"><div class="content browse"><p><a href="http://www.emacswiki.org/emacs/download/whitespace.el">Download</a></p><pre class="code"><span class="linecomment">;;; whitespace.el --- minor mode to visualize TAB, (HARD) SPACE, NEWLINE</span>
+;;; whitespace.el --- minor mode to visualize TAB, (HARD) SPACE, NEWLINE
 
-<span class="linecomment">;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008</span>
-<span class="linecomment">;;   Free Software Foundation, Inc.</span>
+;; Copyright (C) 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008
+;;   Free Software Foundation, Inc.
 
-<span class="linecomment">;; Author: Vinicius Jose Latorre &lt;viniciusjl@ig.com.br&gt;</span>
-<span class="linecomment">;; Maintainer: Vinicius Jose Latorre &lt;viniciusjl@ig.com.br&gt;</span>
-<span class="linecomment">;; Keywords: data, wp</span>
-<span class="linecomment">;; Version: 11.2.2</span>
-<span class="linecomment">;; X-URL: http://www.emacswiki.org/cgi-bin/wiki/ViniciusJoseLatorre</span>
+;; Author: Vinicius Jose Latorre <viniciusjl@ig.com.br>
+;; Maintainer: Vinicius Jose Latorre <viniciusjl@ig.com.br>
+;; Keywords: data, wp
+;; Version: 11.2.2
+;; X-URL: http://www.emacswiki.org/cgi-bin/wiki/ViniciusJoseLatorre
 
-<span class="linecomment">;; This file is part of GNU Emacs.</span>
+;; This file is part of GNU Emacs.
 
-<span class="linecomment">;; GNU Emacs is free software: you can redistribute it and/or modify</span>
-<span class="linecomment">;; it under the terms of the GNU General Public License as published by</span>
-<span class="linecomment">;; the Free Software Foundation, either version 3 of the License, or</span>
-<span class="linecomment">;; (at your option) any later version.</span>
+;; GNU Emacs is free software: you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation, either version 3 of the License, or
+;; (at your option) any later version.
 
-<span class="linecomment">;; GNU Emacs is distributed in the hope that it will be useful,</span>
-<span class="linecomment">;; but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
-<span class="linecomment">;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
-<span class="linecomment">;; GNU General Public License for more details.</span>
+;; GNU Emacs is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
 
-<span class="linecomment">;; You should have received a copy of the GNU General Public License</span>
-<span class="linecomment">;; along with GNU Emacs.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs.  If not, see <http://www.gnu.org/licenses/>.
 
-<span class="linecomment">;;; Commentary:</span>
+;;; Commentary:
 
-<span class="linecomment">;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Introduction</span>
-<span class="linecomment">;; ------------</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; This package is a minor mode to visualize blanks (TAB, (HARD) SPACE</span>
-<span class="linecomment">;; and NEWLINE).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; whitespace uses two ways to visualize blanks: faces and display</span>
-<span class="linecomment">;; table.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * Faces are used to highlight the background with a color.</span>
-<span class="linecomment">;;   whitespace uses font-lock to highlight blank characters.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * Display table changes the way a character is displayed, that is,</span>
-<span class="linecomment">;;   it provides a visual mark for characters, for example, at the end</span>
-<span class="linecomment">;;   of line (?\xB6), at SPACEs (?\xB7) and at TABs (?\xBB).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; The `whitespace-style' variable selects which way blanks are</span>
-<span class="linecomment">;; visualized.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Note that when whitespace is turned on, whitespace saves the</span>
-<span class="linecomment">;; font-lock state, that is, if font-lock is on or off.  And</span>
-<span class="linecomment">;; whitespace restores the font-lock state when it is turned off.  So,</span>
-<span class="linecomment">;; if whitespace is turned on and font-lock is off, whitespace also</span>
-<span class="linecomment">;; turns on the font-lock to highlight blanks, but the font-lock will</span>
-<span class="linecomment">;; be turned off when whitespace is turned off.  Thus, turn on</span>
-<span class="linecomment">;; font-lock before whitespace is on, if you want that font-lock</span>
-<span class="linecomment">;; continues on after whitespace is turned off.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; When whitespace is on, it takes care of highlighting some special</span>
-<span class="linecomment">;; characters over the default mechanism of `nobreak-char-display'</span>
-<span class="linecomment">;; (which see) and `show-trailing-whitespace' (which see).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; There are two ways of using whitespace: local and global.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * Local whitespace affects only the current buffer.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * Global whitespace affects all current and future buffers.  That</span>
-<span class="linecomment">;;   is, if you turn on global whitespace and then create a new</span>
-<span class="linecomment">;;   buffer, the new buffer will also have whitespace on.  The</span>
-<span class="linecomment">;;   `whitespace-global-modes' variable controls which major-mode will</span>
-<span class="linecomment">;;   be automagically turned on.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; You can mix the local and global usage without any conflict.  But</span>
-<span class="linecomment">;; local whitespace has priority over global whitespace.  Whitespace</span>
-<span class="linecomment">;; mode is active in a buffer if you have enabled it in that buffer or</span>
-<span class="linecomment">;; if you have enabled it globally.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; When global and local whitespace are on:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * if local whitespace is turned off, whitespace is turned off for</span>
-<span class="linecomment">;;   the current buffer only.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * if global whitespace is turned off, whitespace continues on only</span>
-<span class="linecomment">;;   in the buffers in which local whitespace is on.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; To use whitespace, insert in your ~/.emacs:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    (require 'whitespace-mode)</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Or autoload at least one of the commands`whitespace-mode',</span>
-<span class="linecomment">;; `whitespace-toggle-options', `global-whitespace-mode' or</span>
-<span class="linecomment">;; `global-whitespace-toggle-options'.  For example:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    (autoload 'whitespace-mode           "whitespace"</span>
-<span class="linecomment">;;      "Toggle whitespace visualization."        t)</span>
-<span class="linecomment">;;    (autoload 'whitespace-toggle-options "whitespace"</span>
-<span class="linecomment">;;      "Toggle local `whitespace-mode' options." t)</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; whitespace was inspired by:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    whitespace.el            Rajesh Vaidheeswarran &lt;rv@gnu.org&gt;</span>
-<span class="linecomment">;;	Warn about and clean bogus whitespaces in the file</span>
-<span class="linecomment">;;	(inspired the idea to warn and clean some blanks)</span>
-<span class="linecomment">;;	This was the original `whitespace.el' which was replaced by</span>
-<span class="linecomment">;;	`blank-mode.el'.  And later `blank-mode.el' was renamed to</span>
-<span class="linecomment">;;	`whitespace.el'.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    show-whitespace-mode.el  Aurelien Tisne &lt;aurelien.tisne@free.fr&gt;</span>
-<span class="linecomment">;;       Simple mode to highlight whitespaces</span>
-<span class="linecomment">;;       (inspired the idea to use font-lock)</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    whitespace-mode.el       Lawrence Mitchell &lt;wence@gmx.li&gt;</span>
-<span class="linecomment">;;       Major mode for editing Whitespace</span>
-<span class="linecomment">;;       (inspired the idea to use display table)</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    visws.el                 Miles Bader &lt;miles@gnu.org&gt;</span>
-<span class="linecomment">;;       Make whitespace visible</span>
-<span class="linecomment">;;       (handle display table, his code was modified, but the main</span>
-<span class="linecomment">;;       idea was kept)</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Using whitespace</span>
-<span class="linecomment">;; ----------------</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; There is no problem if you mix local and global minor mode usage.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * LOCAL whitespace:</span>
-<span class="linecomment">;;    + To toggle whitespace options locally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         M-x whitespace-toggle-options RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    + To activate whitespace locally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         C-u 1 M-x whitespace-mode RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    + To deactivate whitespace locally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         C-u 0 M-x whitespace-mode RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    + To toggle whitespace locally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         M-x whitespace-mode RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; * GLOBAL whitespace:</span>
-<span class="linecomment">;;    + To toggle whitespace options globally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         M-x global-whitespace-toggle-options RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    + To activate whitespace globally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         C-u 1 M-x global-whitespace-mode RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    + To deactivate whitespace globally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         C-u 0 M-x global-whitespace-mode RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;    + To toggle whitespace globally, type:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;         M-x global-whitespace-mode RET</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; There are also the following useful commands:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-newline-mode'</span>
-<span class="linecomment">;;    Toggle NEWLINE minor mode visualization ("nl" on modeline).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `global-whitespace-newline-mode'</span>
-<span class="linecomment">;;    Toggle NEWLINE global minor mode visualization ("NL" on modeline).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-report'</span>
-<span class="linecomment">;;    Report some blank problems in buffer.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-report-region'</span>
-<span class="linecomment">;;    Report some blank problems in a region.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-cleanup'</span>
-<span class="linecomment">;;    Cleanup some blank problems in all buffer or at region.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-cleanup-region'</span>
-<span class="linecomment">;;    Cleanup some blank problems at region.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; The problems, which are cleaned up, are:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; 1. empty lines at beginning of buffer.</span>
-<span class="linecomment">;; 2. empty lines at end of buffer.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `empty', remove all</span>
-<span class="linecomment">;;    empty lines at beginning and/or end of buffer.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; 3. 8 or more SPACEs at beginning of line.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `indentation':</span>
-<span class="linecomment">;;    replace 8 or more SPACEs at beginning of line by TABs, if</span>
-<span class="linecomment">;;    `indent-tabs-mode' is non-nil; otherwise, replace TABs by</span>
-<span class="linecomment">;;    SPACEs.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `indentation::tab',</span>
-<span class="linecomment">;;    replace 8 or more SPACEs at beginning of line by TABs.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `indentation::space',</span>
-<span class="linecomment">;;    replace TABs by SPACEs.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; 4. SPACEs before TAB.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `space-before-tab':</span>
-<span class="linecomment">;;    replace SPACEs by TABs, if `indent-tabs-mode' is non-nil;</span>
-<span class="linecomment">;;    otherwise, replace TABs by SPACEs.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value</span>
-<span class="linecomment">;;    `space-before-tab::tab', replace SPACEs by TABs.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value</span>
-<span class="linecomment">;;    `space-before-tab::space', replace TABs by SPACEs.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; 5. SPACEs or TABs at end of line.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `trailing', remove all</span>
-<span class="linecomment">;;    SPACEs or TABs at end of line.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; 6. 8 or more SPACEs after TAB.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `space-after-tab':</span>
-<span class="linecomment">;;    replace SPACEs by TABs, if `indent-tabs-mode' is non-nil;</span>
-<span class="linecomment">;;    otherwise, replace TABs by SPACEs.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value `space-after-tab::tab',</span>
-<span class="linecomment">;;    replace SPACEs by TABs.</span>
-<span class="linecomment">;;    If `whitespace-style' includes the value</span>
-<span class="linecomment">;;    `space-after-tab::space', replace TABs by SPACEs.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Hooks</span>
-<span class="linecomment">;; -----</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; whitespace has the following hook variables:</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-mode-hook'</span>
-<span class="linecomment">;;    It is evaluated always when whitespace is turned on locally.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `global-whitespace-mode-hook'</span>
-<span class="linecomment">;;    It is evaluated always when whitespace is turned on globally.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-load-hook'</span>
-<span class="linecomment">;;    It is evaluated after whitespace package is loaded.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Options</span>
-<span class="linecomment">;; -------</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Below it's shown a brief description of whitespace options, please,</span>
-<span class="linecomment">;; see the options declaration in the code for a long documentation.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-style'		Specify which kind of blank is</span>
-<span class="linecomment">;;				visualized.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-space'		Face used to visualize SPACE.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-hspace'		Face used to visualize HARD SPACE.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-tab'		Face used to visualize TAB.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-newline'		Face used to visualize NEWLINE char</span>
-<span class="linecomment">;;				mapping.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-trailing'	Face used to visualize trailing</span>
-<span class="linecomment">;;				blanks.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-line'		Face used to visualize "long" lines.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-space-before-tab'	Face used to visualize SPACEs</span>
-<span class="linecomment">;;					before TAB.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-indentation'	Face used to visualize 8 or more</span>
-<span class="linecomment">;;				SPACEs at beginning of line.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-empty'		Face used to visualize empty lines at</span>
-<span class="linecomment">;;				beginning and/or end of buffer.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-space-after-tab'	Face used to visualize 8 or more</span>
-<span class="linecomment">;;				SPACEs after TAB.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-space-regexp'	Specify SPACE characters regexp.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-hspace-regexp'	Specify HARD SPACE characters regexp.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-tab-regexp'	Specify TAB characters regexp.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-trailing-regexp'	Specify trailing characters regexp.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-space-before-tab-regexp'	Specify SPACEs before TAB</span>
-<span class="linecomment">;;					regexp.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-indentation-regexp'	Specify regexp for 8 or more</span>
-<span class="linecomment">;;					SPACEs at beginning of line.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-empty-at-bob-regexp'	Specify regexp for empty lines</span>
-<span class="linecomment">;;					at beginning of buffer.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-empty-at-eob-regexp'	Specify regexp for empty lines</span>
-<span class="linecomment">;;					at end of buffer.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-space-after-tab-regexp'	Specify regexp for 8 or more</span>
-<span class="linecomment">;;					SPACEs after TAB.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-line-column'	Specify column beyond which the line</span>
-<span class="linecomment">;;				is highlighted.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-display-mappings'	Specify an alist of mappings</span>
-<span class="linecomment">;;					for displaying characters.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-global-modes'	Modes for which global</span>
-<span class="linecomment">;;				`whitespace-mode' is automagically</span>
-<span class="linecomment">;;				turned on.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; `whitespace-action'		Specify which action is taken when a</span>
-<span class="linecomment">;;				buffer is visited or written.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Acknowledgements</span>
-<span class="linecomment">;; ----------------</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to David Reitter &lt;david.reitter@gmail.com&gt; for suggesting a</span>
-<span class="linecomment">;; `whitespace-newline' initialization with low contrast relative to</span>
-<span class="linecomment">;; the background color.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Stephen Deasey &lt;sdeasey@gmail.com&gt; for the</span>
-<span class="linecomment">;; `indent-tabs-mode' usage suggestion.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Eric Cooper &lt;ecc@cmu.edu&gt; for the suggestion to have hook</span>
-<span class="linecomment">;; actions when buffer is written as the original whitespace package</span>
-<span class="linecomment">;; had.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to nschum (EmacsWiki) for the idea about highlight "long"</span>
-<span class="linecomment">;; lines tail.  See EightyColumnRule (EmacsWiki).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Juri Linkov &lt;juri@jurta.org&gt; for suggesting:</span>
-<span class="linecomment">;;    * `define-minor-mode'.</span>
-<span class="linecomment">;;    * `global-whitespace-*' name for global commands.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Robert J. Chassell &lt;bob@gnu.org&gt; for doc fix and testing.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Drew Adams &lt;drew.adams@oracle.com&gt; for toggle commands</span>
-<span class="linecomment">;; suggestion.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Antti Kaihola &lt;antti.kaihola@linux-aktivaattori.org&gt; for</span>
-<span class="linecomment">;; helping to fix `find-file-hooks' reference.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Andreas Roehler &lt;andreas.roehler@easy-emacs.de&gt; for</span>
-<span class="linecomment">;; indicating defface byte-compilation warnings.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to TimOCallaghan (EmacsWiki) for the idea about highlight</span>
-<span class="linecomment">;; "long" lines.  See EightyColumnRule (EmacsWiki).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Yanghui Bian &lt;yanghuibian@gmail.com&gt; for indicating a new</span>
-<span class="linecomment">;; NEWLINE character mapping.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Pete Forman &lt;pete.forman@westgeo.com&gt; for indicating</span>
-<span class="linecomment">;; whitespace-mode.el on XEmacs.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to Miles Bader &lt;miles@gnu.org&gt; for handling display table via</span>
-<span class="linecomment">;; visws.el (his code was modified, but the main idea was kept).</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; Thanks to:</span>
-<span class="linecomment">;;    Rajesh Vaidheeswarran &lt;rv@gnu.org&gt;	(original) whitespace.el</span>
-<span class="linecomment">;;    Aurelien Tisne &lt;aurelien.tisne@free.fr&gt;	show-whitespace-mode.el</span>
-<span class="linecomment">;;    Lawrence Mitchell &lt;wence@gmx.li&gt;		whitespace-mode.el</span>
-<span class="linecomment">;;    Miles Bader &lt;miles@gnu.org&gt;		visws.el</span>
-<span class="linecomment">;; And to all people who contributed with them.</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;;</span>
-<span class="linecomment">;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;
+;; Introduction
+;; ------------
+;;
+;; This package is a minor mode to visualize blanks (TAB, (HARD) SPACE
+;; and NEWLINE).
+;;
+;; whitespace uses two ways to visualize blanks: faces and display
+;; table.
+;;
+;; * Faces are used to highlight the background with a color.
+;;   whitespace uses font-lock to highlight blank characters.
+;;
+;; * Display table changes the way a character is displayed, that is,
+;;   it provides a visual mark for characters, for example, at the end
+;;   of line (?\xB6), at SPACEs (?\xB7) and at TABs (?\xBB).
+;;
+;; The `whitespace-style' variable selects which way blanks are
+;; visualized.
+;;
+;; Note that when whitespace is turned on, whitespace saves the
+;; font-lock state, that is, if font-lock is on or off.  And
+;; whitespace restores the font-lock state when it is turned off.  So,
+;; if whitespace is turned on and font-lock is off, whitespace also
+;; turns on the font-lock to highlight blanks, but the font-lock will
+;; be turned off when whitespace is turned off.  Thus, turn on
+;; font-lock before whitespace is on, if you want that font-lock
+;; continues on after whitespace is turned off.
+;;
+;; When whitespace is on, it takes care of highlighting some special
+;; characters over the default mechanism of `nobreak-char-display'
+;; (which see) and `show-trailing-whitespace' (which see).
+;;
+;; There are two ways of using whitespace: local and global.
+;;
+;; * Local whitespace affects only the current buffer.
+;;
+;; * Global whitespace affects all current and future buffers.  That
+;;   is, if you turn on global whitespace and then create a new
+;;   buffer, the new buffer will also have whitespace on.  The
+;;   `whitespace-global-modes' variable controls which major-mode will
+;;   be automagically turned on.
+;;
+;; You can mix the local and global usage without any conflict.  But
+;; local whitespace has priority over global whitespace.  Whitespace
+;; mode is active in a buffer if you have enabled it in that buffer or
+;; if you have enabled it globally.
+;;
+;; When global and local whitespace are on:
+;;
+;; * if local whitespace is turned off, whitespace is turned off for
+;;   the current buffer only.
+;;
+;; * if global whitespace is turned off, whitespace continues on only
+;;   in the buffers in which local whitespace is on.
+;;
+;; To use whitespace, insert in your ~/.emacs:
+;;
+;;    (require 'whitespace-mode)
+;;
+;; Or autoload at least one of the commands`whitespace-mode',
+;; `whitespace-toggle-options', `global-whitespace-mode' or
+;; `global-whitespace-toggle-options'.  For example:
+;;
+;;    (autoload 'whitespace-mode           "whitespace"
+;;      "Toggle whitespace visualization."        t)
+;;    (autoload 'whitespace-toggle-options "whitespace"
+;;      "Toggle local `whitespace-mode' options." t)
+;;
+;; whitespace was inspired by:
+;;
+;;    whitespace.el            Rajesh Vaidheeswarran <rv@gnu.org>
+;;	Warn about and clean bogus whitespaces in the file
+;;	(inspired the idea to warn and clean some blanks)
+;;	This was the original `whitespace.el' which was replaced by
+;;	`blank-mode.el'.  And later `blank-mode.el' was renamed to
+;;	`whitespace.el'.
+;;
+;;    show-whitespace-mode.el  Aurelien Tisne <aurelien.tisne@free.fr>
+;;       Simple mode to highlight whitespaces
+;;       (inspired the idea to use font-lock)
+;;
+;;    whitespace-mode.el       Lawrence Mitchell <wence@gmx.li>
+;;       Major mode for editing Whitespace
+;;       (inspired the idea to use display table)
+;;
+;;    visws.el                 Miles Bader <miles@gnu.org>
+;;       Make whitespace visible
+;;       (handle display table, his code was modified, but the main
+;;       idea was kept)
+;;
+;;
+;; Using whitespace
+;; ----------------
+;;
+;; There is no problem if you mix local and global minor mode usage.
+;;
+;; * LOCAL whitespace:
+;;    + To toggle whitespace options locally, type:
+;;
+;;         M-x whitespace-toggle-options RET
+;;
+;;    + To activate whitespace locally, type:
+;;
+;;         C-u 1 M-x whitespace-mode RET
+;;
+;;    + To deactivate whitespace locally, type:
+;;
+;;         C-u 0 M-x whitespace-mode RET
+;;
+;;    + To toggle whitespace locally, type:
+;;
+;;         M-x whitespace-mode RET
+;;
+;; * GLOBAL whitespace:
+;;    + To toggle whitespace options globally, type:
+;;
+;;         M-x global-whitespace-toggle-options RET
+;;
+;;    + To activate whitespace globally, type:
+;;
+;;         C-u 1 M-x global-whitespace-mode RET
+;;
+;;    + To deactivate whitespace globally, type:
+;;
+;;         C-u 0 M-x global-whitespace-mode RET
+;;
+;;    + To toggle whitespace globally, type:
+;;
+;;         M-x global-whitespace-mode RET
+;;
+;; There are also the following useful commands:
+;;
+;; `whitespace-newline-mode'
+;;    Toggle NEWLINE minor mode visualization ("nl" on modeline).
+;;
+;; `global-whitespace-newline-mode'
+;;    Toggle NEWLINE global minor mode visualization ("NL" on modeline).
+;;
+;; `whitespace-report'
+;;    Report some blank problems in buffer.
+;;
+;; `whitespace-report-region'
+;;    Report some blank problems in a region.
+;;
+;; `whitespace-cleanup'
+;;    Cleanup some blank problems in all buffer or at region.
+;;
+;; `whitespace-cleanup-region'
+;;    Cleanup some blank problems at region.
+;;
+;; The problems, which are cleaned up, are:
+;;
+;; 1. empty lines at beginning of buffer.
+;; 2. empty lines at end of buffer.
+;;    If `whitespace-style' includes the value `empty', remove all
+;;    empty lines at beginning and/or end of buffer.
+;;
+;; 3. 8 or more SPACEs at beginning of line.
+;;    If `whitespace-style' includes the value `indentation':
+;;    replace 8 or more SPACEs at beginning of line by TABs, if
+;;    `indent-tabs-mode' is non-nil; otherwise, replace TABs by
+;;    SPACEs.
+;;    If `whitespace-style' includes the value `indentation::tab',
+;;    replace 8 or more SPACEs at beginning of line by TABs.
+;;    If `whitespace-style' includes the value `indentation::space',
+;;    replace TABs by SPACEs.
+;;
+;; 4. SPACEs before TAB.
+;;    If `whitespace-style' includes the value `space-before-tab':
+;;    replace SPACEs by TABs, if `indent-tabs-mode' is non-nil;
+;;    otherwise, replace TABs by SPACEs.
+;;    If `whitespace-style' includes the value
+;;    `space-before-tab::tab', replace SPACEs by TABs.
+;;    If `whitespace-style' includes the value
+;;    `space-before-tab::space', replace TABs by SPACEs.
+;;
+;; 5. SPACEs or TABs at end of line.
+;;    If `whitespace-style' includes the value `trailing', remove all
+;;    SPACEs or TABs at end of line.
+;;
+;; 6. 8 or more SPACEs after TAB.
+;;    If `whitespace-style' includes the value `space-after-tab':
+;;    replace SPACEs by TABs, if `indent-tabs-mode' is non-nil;
+;;    otherwise, replace TABs by SPACEs.
+;;    If `whitespace-style' includes the value `space-after-tab::tab',
+;;    replace SPACEs by TABs.
+;;    If `whitespace-style' includes the value
+;;    `space-after-tab::space', replace TABs by SPACEs.
+;;
+;;
+;; Hooks
+;; -----
+;;
+;; whitespace has the following hook variables:
+;;
+;; `whitespace-mode-hook'
+;;    It is evaluated always when whitespace is turned on locally.
+;;
+;; `global-whitespace-mode-hook'
+;;    It is evaluated always when whitespace is turned on globally.
+;;
+;; `whitespace-load-hook'
+;;    It is evaluated after whitespace package is loaded.
+;;
+;;
+;; Options
+;; -------
+;;
+;; Below it's shown a brief description of whitespace options, please,
+;; see the options declaration in the code for a long documentation.
+;;
+;; `whitespace-style'		Specify which kind of blank is
+;;				visualized.
+;;
+;; `whitespace-space'		Face used to visualize SPACE.
+;;
+;; `whitespace-hspace'		Face used to visualize HARD SPACE.
+;;
+;; `whitespace-tab'		Face used to visualize TAB.
+;;
+;; `whitespace-newline'		Face used to visualize NEWLINE char
+;;				mapping.
+;;
+;; `whitespace-trailing'	Face used to visualize trailing
+;;				blanks.
+;;
+;; `whitespace-line'		Face used to visualize "long" lines.
+;;
+;; `whitespace-space-before-tab'	Face used to visualize SPACEs
+;;					before TAB.
+;;
+;; `whitespace-indentation'	Face used to visualize 8 or more
+;;				SPACEs at beginning of line.
+;;
+;; `whitespace-empty'		Face used to visualize empty lines at
+;;				beginning and/or end of buffer.
+;;
+;; `whitespace-space-after-tab'	Face used to visualize 8 or more
+;;				SPACEs after TAB.
+;;
+;; `whitespace-space-regexp'	Specify SPACE characters regexp.
+;;
+;; `whitespace-hspace-regexp'	Specify HARD SPACE characters regexp.
+;;
+;; `whitespace-tab-regexp'	Specify TAB characters regexp.
+;;
+;; `whitespace-trailing-regexp'	Specify trailing characters regexp.
+;;
+;; `whitespace-space-before-tab-regexp'	Specify SPACEs before TAB
+;;					regexp.
+;;
+;; `whitespace-indentation-regexp'	Specify regexp for 8 or more
+;;					SPACEs at beginning of line.
+;;
+;; `whitespace-empty-at-bob-regexp'	Specify regexp for empty lines
+;;					at beginning of buffer.
+;;
+;; `whitespace-empty-at-eob-regexp'	Specify regexp for empty lines
+;;					at end of buffer.
+;;
+;; `whitespace-space-after-tab-regexp'	Specify regexp for 8 or more
+;;					SPACEs after TAB.
+;;
+;; `whitespace-line-column'	Specify column beyond which the line
+;;				is highlighted.
+;;
+;; `whitespace-display-mappings'	Specify an alist of mappings
+;;					for displaying characters.
+;;
+;; `whitespace-global-modes'	Modes for which global
+;;				`whitespace-mode' is automagically
+;;				turned on.
+;;
+;; `whitespace-action'		Specify which action is taken when a
+;;				buffer is visited or written.
+;;
+;;
+;; Acknowledgements
+;; ----------------
+;;
+;; Thanks to David Reitter <david.reitter@gmail.com> for suggesting a
+;; `whitespace-newline' initialization with low contrast relative to
+;; the background color.
+;;
+;; Thanks to Stephen Deasey <sdeasey@gmail.com> for the
+;; `indent-tabs-mode' usage suggestion.
+;;
+;; Thanks to Eric Cooper <ecc@cmu.edu> for the suggestion to have hook
+;; actions when buffer is written as the original whitespace package
+;; had.
+;;
+;; Thanks to nschum (EmacsWiki) for the idea about highlight "long"
+;; lines tail.  See EightyColumnRule (EmacsWiki).
+;;
+;; Thanks to Juri Linkov <juri@jurta.org> for suggesting:
+;;    * `define-minor-mode'.
+;;    * `global-whitespace-*' name for global commands.
+;;
+;; Thanks to Robert J. Chassell <bob@gnu.org> for doc fix and testing.
+;;
+;; Thanks to Drew Adams <drew.adams@oracle.com> for toggle commands
+;; suggestion.
+;;
+;; Thanks to Antti Kaihola <antti.kaihola@linux-aktivaattori.org> for
+;; helping to fix `find-file-hooks' reference.
+;;
+;; Thanks to Andreas Roehler <andreas.roehler@easy-emacs.de> for
+;; indicating defface byte-compilation warnings.
+;;
+;; Thanks to TimOCallaghan (EmacsWiki) for the idea about highlight
+;; "long" lines.  See EightyColumnRule (EmacsWiki).
+;;
+;; Thanks to Yanghui Bian <yanghuibian@gmail.com> for indicating a new
+;; NEWLINE character mapping.
+;;
+;; Thanks to Pete Forman <pete.forman@westgeo.com> for indicating
+;; whitespace-mode.el on XEmacs.
+;;
+;; Thanks to Miles Bader <miles@gnu.org> for handling display table via
+;; visws.el (his code was modified, but the main idea was kept).
+;;
+;; Thanks to:
+;;    Rajesh Vaidheeswarran <rv@gnu.org>	(original) whitespace.el
+;;    Aurelien Tisne <aurelien.tisne@free.fr>	show-whitespace-mode.el
+;;    Lawrence Mitchell <wence@gmx.li>		whitespace-mode.el
+;;    Miles Bader <miles@gnu.org>		visws.el
+;; And to all people who contributed with them.
+;;
+;;
+;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-<span class="linecomment">;;; code:</span>
+;;; code:
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; User Variables:</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; User Variables:
 
 
-<span class="linecomment">;;; Interface to the command system</span>
+;;; Interface to the command system
 
 
 (defgroup whitespace nil
-  "<span class="quote">Visualize blanks (TAB, (HARD) SPACE and NEWLINE).</span>"
-  :link '(emacs-library-link :tag "<span class="quote">Source Lisp File</span>" "<span class="quote">whitespace.el</span>")
-  :version "<span class="quote">23.1</span>"
+  "Visualize blanks (TAB, (HARD) SPACE and NEWLINE)."
+  :link '(emacs-library-link :tag "Source Lisp File" "whitespace.el")
+  :version "23.1"
   :group 'wp
   :group 'data)
 
@@ -403,7 +381,7 @@
   '(tabs spaces trailing lines space-before-tab newline
 	 indentation empty space-after-tab
 	 space-mark tab-mark newline-mark)
-  "<span class="quote">*Specify which kind of blank is visualized.
+  "*Specify which kind of blank is visualized.
 
 It's a list containing some or all of the following values:
 
@@ -504,205 +482,205 @@ So, for example, if indentation and indentation::space are
 included in `whitespace-style' list, the indentation value is
 evaluated instead of indentation::space value.
 
-See also `whitespace-display-mappings' for documentation.</span>"
-  :type '(repeat :tag "<span class="quote">Kind of Blank</span>"
-		 (choice :tag "<span class="quote">Kind of Blank Face</span>"
-			 (const :tag "<span class="quote">(Face) Trailing TABs, SPACEs and HARD SPACEs</span>"
+See also `whitespace-display-mappings' for documentation."
+  :type '(repeat :tag "Kind of Blank"
+		 (choice :tag "Kind of Blank Face"
+			 (const :tag "(Face) Trailing TABs, SPACEs and HARD SPACEs"
 				trailing)
-			 (const :tag "<span class="quote">(Face) SPACEs and HARD SPACEs</span>"
+			 (const :tag "(Face) SPACEs and HARD SPACEs"
 				spaces)
-			 (const :tag "<span class="quote">(Face) TABs</span>" tabs)
-			 (const :tag "<span class="quote">(Face) Lines</span>" lines)
-			 (const :tag "<span class="quote">(Face) SPACEs before TAB</span>"
+			 (const :tag "(Face) TABs" tabs)
+			 (const :tag "(Face) Lines" lines)
+			 (const :tag "(Face) SPACEs before TAB"
 				space-before-tab)
-			 (const :tag "<span class="quote">(Face) NEWLINEs</span>" newline)
-			 (const :tag "<span class="quote">(Face) Indentation SPACEs</span>"
+			 (const :tag "(Face) NEWLINEs" newline)
+			 (const :tag "(Face) Indentation SPACEs"
 				indentation)
-			 (const :tag "<span class="quote">(Face) Empty Lines At BOB And/Or EOB</span>"
+			 (const :tag "(Face) Empty Lines At BOB And/Or EOB"
 				empty)
-			 (const :tag "<span class="quote">(Face) SPACEs after TAB</span>"
+			 (const :tag "(Face) SPACEs after TAB"
 				space-after-tab)
-			 (const :tag "<span class="quote">(Mark) SPACEs and HARD SPACEs</span>"
+			 (const :tag "(Mark) SPACEs and HARD SPACEs"
 				space-mark)
-			 (const :tag "<span class="quote">(Mark) TABs</span>" tab-mark)
-			 (const :tag "<span class="quote">(Mark) NEWLINEs</span>" newline-mark)))
+			 (const :tag "(Mark) TABs" tab-mark)
+			 (const :tag "(Mark) NEWLINEs" newline-mark)))
   :group 'whitespace)
 
 
 (defcustom whitespace-space 'whitespace-space
-  "<span class="quote">*Symbol face used to visualize SPACE.
+  "*Symbol face used to visualize SPACE.
 
-Used when `whitespace-style' includes the value `spaces'.</span>"
+Used when `whitespace-style' includes the value `spaces'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-space
   '((((class color) (background dark))
-     (:background "<span class="quote">grey20</span>"      :foreground "<span class="quote">aquamarine3</span>"))
+     (:background "grey20"      :foreground "aquamarine3"))
     (((class color) (background light))
-     (:background "<span class="quote">LightYellow</span>" :foreground "<span class="quote">aquamarine3</span>"))
+     (:background "LightYellow" :foreground "aquamarine3"))
     (t (:inverse-video t)))
-  "<span class="quote">Face used to visualize SPACE.</span>"
+  "Face used to visualize SPACE."
   :group 'whitespace)
 
 
 (defcustom whitespace-hspace 'whitespace-hspace
-  "<span class="quote">*Symbol face used to visualize HARD SPACE.
+  "*Symbol face used to visualize HARD SPACE.
 
-Used when `whitespace-style' includes the value `spaces'.</span>"
+Used when `whitespace-style' includes the value `spaces'."
   :type 'face
   :group 'whitespace)
 
 
-(defface whitespace-hspace		<span class="linecomment">; 'nobreak-space</span>
+(defface whitespace-hspace		; 'nobreak-space
   '((((class color) (background dark))
-     (:background "<span class="quote">grey24</span>"        :foreground "<span class="quote">aquamarine3</span>"))
+     (:background "grey24"        :foreground "aquamarine3"))
     (((class color) (background light))
-     (:background "<span class="quote">LemonChiffon3</span>" :foreground "<span class="quote">aquamarine3</span>"))
+     (:background "LemonChiffon3" :foreground "aquamarine3"))
     (t (:inverse-video t)))
-  "<span class="quote">Face used to visualize HARD SPACE.</span>"
+  "Face used to visualize HARD SPACE."
   :group 'whitespace)
 
 
 (defcustom whitespace-tab 'whitespace-tab
-  "<span class="quote">*Symbol face used to visualize TAB.
+  "*Symbol face used to visualize TAB.
 
-Used when `whitespace-style' includes the value `tabs'.</span>"
+Used when `whitespace-style' includes the value `tabs'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-tab
   '((((class color) (background dark))
-     (:background "<span class="quote">grey22</span>" :foreground "<span class="quote">aquamarine3</span>"))
+     (:background "grey22" :foreground "aquamarine3"))
     (((class color) (background light))
-     (:background "<span class="quote">beige</span>"  :foreground "<span class="quote">aquamarine3</span>"))
+     (:background "beige"  :foreground "aquamarine3"))
     (t (:inverse-video t)))
-  "<span class="quote">Face used to visualize TAB.</span>"
+  "Face used to visualize TAB."
   :group 'whitespace)
 
 
 (defcustom whitespace-newline 'whitespace-newline
-  "<span class="quote">*Symbol face used to visualize NEWLINE char mapping.
+  "*Symbol face used to visualize NEWLINE char mapping.
 
 See `whitespace-display-mappings'.
 
 Used when `whitespace-style' includes the values `newline-mark'
-and `newline'.</span>"
+and `newline'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-newline
   '((((class color) (background dark))
-     (:foreground "<span class="quote">darkgray</span>" :bold nil))
+     (:foreground "darkgray" :bold nil))
     (((class color) (background light))
-     (:foreground "<span class="quote">lightgray</span>" :bold nil))
+     (:foreground "lightgray" :bold nil))
     (t (:underline t :bold nil)))
-  "<span class="quote">Face used to visualize NEWLINE char mapping.
+  "Face used to visualize NEWLINE char mapping.
 
-See `whitespace-display-mappings'.</span>"
+See `whitespace-display-mappings'."
   :group 'whitespace)
 
 
 (defcustom whitespace-trailing 'whitespace-trailing
-  "<span class="quote">*Symbol face used to visualize trailing blanks.
+  "*Symbol face used to visualize trailing blanks.
 
-Used when `whitespace-style' includes the value `trailing'.</span>"
+Used when `whitespace-style' includes the value `trailing'."
   :type 'face
   :group 'whitespace)
 
 
-(defface whitespace-trailing		<span class="linecomment">; 'trailing-whitespace</span>
+(defface whitespace-trailing		; 'trailing-whitespace
   '((((class mono)) (:inverse-video t :bold t :underline t))
-    (t (:background "<span class="quote">red1</span>" :foreground "<span class="quote">yellow</span>" :bold t)))
-  "<span class="quote">Face used to visualize trailing blanks.</span>"
+    (t (:background "red1" :foreground "yellow" :bold t)))
+  "Face used to visualize trailing blanks."
   :group 'whitespace)
 
 
 (defcustom whitespace-line 'whitespace-line
-  "<span class="quote">*Symbol face used to visualize \"long\" lines.
+  "*Symbol face used to visualize \"long\" lines.
 
 See `whitespace-line-column'.
 
-Used when `whitespace-style' includes the value `line'.</span>"
+Used when `whitespace-style' includes the value `line'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-line
   '((((class mono)) (:inverse-video t :bold t :underline t))
-    (t (:background "<span class="quote">gray20</span>" :foreground "<span class="quote">violet</span>")))
-  "<span class="quote">Face used to visualize \"long\" lines.
+    (t (:background "gray20" :foreground "violet")))
+  "Face used to visualize \"long\" lines.
 
-See `whitespace-line-column'.</span>"
+See `whitespace-line-column'."
   :group 'whitespace)
 
 
 (defcustom whitespace-space-before-tab 'whitespace-space-before-tab
-  "<span class="quote">*Symbol face used to visualize SPACEs before TAB.
+  "*Symbol face used to visualize SPACEs before TAB.
 
-Used when `whitespace-style' includes the value `space-before-tab'.</span>"
+Used when `whitespace-style' includes the value `space-before-tab'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-space-before-tab
   '((((class mono)) (:inverse-video t :bold t :underline t))
-    (t (:background "<span class="quote">DarkOrange</span>" :foreground "<span class="quote">firebrick</span>")))
-  "<span class="quote">Face used to visualize SPACEs before TAB.</span>"
+    (t (:background "DarkOrange" :foreground "firebrick")))
+  "Face used to visualize SPACEs before TAB."
   :group 'whitespace)
 
 
 (defcustom whitespace-indentation 'whitespace-indentation
-  "<span class="quote">*Symbol face used to visualize 8 or more SPACEs at beginning of line.
+  "*Symbol face used to visualize 8 or more SPACEs at beginning of line.
 
-Used when `whitespace-style' includes the value `indentation'.</span>"
+Used when `whitespace-style' includes the value `indentation'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-indentation
   '((((class mono)) (:inverse-video t :bold t :underline t))
-    (t (:background "<span class="quote">yellow</span>" :foreground "<span class="quote">firebrick</span>")))
-  "<span class="quote">Face used to visualize 8 or more SPACEs at beginning of line.</span>"
+    (t (:background "yellow" :foreground "firebrick")))
+  "Face used to visualize 8 or more SPACEs at beginning of line."
   :group 'whitespace)
 
 
 (defcustom whitespace-empty 'whitespace-empty
-  "<span class="quote">*Symbol face used to visualize empty lines at beginning and/or end of buffer.
+  "*Symbol face used to visualize empty lines at beginning and/or end of buffer.
 
-Used when `whitespace-style' includes the value `empty'.</span>"
+Used when `whitespace-style' includes the value `empty'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-empty
   '((((class mono)) (:inverse-video t :bold t :underline t))
-    (t (:background "<span class="quote">yellow</span>" :foreground "<span class="quote">firebrick</span>")))
-  "<span class="quote">Face used to visualize empty lines at beginning and/or end of buffer.</span>"
+    (t (:background "yellow" :foreground "firebrick")))
+  "Face used to visualize empty lines at beginning and/or end of buffer."
   :group 'whitespace)
 
 
 (defcustom whitespace-space-after-tab 'whitespace-space-after-tab
-  "<span class="quote">*Symbol face used to visualize 8 or more SPACEs after TAB.
+  "*Symbol face used to visualize 8 or more SPACEs after TAB.
 
-Used when `whitespace-style' includes the value `space-after-tab'.</span>"
+Used when `whitespace-style' includes the value `space-after-tab'."
   :type 'face
   :group 'whitespace)
 
 
 (defface whitespace-space-after-tab
   '((((class mono)) (:inverse-video t :bold t :underline t))
-    (t (:background "<span class="quote">yellow</span>" :foreground "<span class="quote">firebrick</span>")))
-  "<span class="quote">Face used to visualize 8 or more SPACEs after TAB.</span>"
+    (t (:background "yellow" :foreground "firebrick")))
+  "Face used to visualize 8 or more SPACEs after TAB."
   :group 'whitespace)
 
 
 (defcustom whitespace-hspace-regexp
-  "<span class="quote">\\(\\(\xA0\\|\x8A0\\|\x920\\|\xE20\\|\xF20\\)+\\)</span>"
-  "<span class="quote">*Specify HARD SPACE characters regexp.
+  "\\(\\(\xA0\\|\x8A0\\|\x920\\|\xE20\\|\xF20\\)+\\)"
+  "*Specify HARD SPACE characters regexp.
 
 If you're using `mule' package, there may be other characters besides:
 
@@ -724,13 +702,13 @@ visualize only HARD SPACEs between TABs.
 NOTE: Enclose always by \\\\( and \\\\) the elements to highlight.
       Use exactly one pair of enclosing \\\\( and \\\\).
 
-Used when `whitespace-style' includes `spaces'.</span>"
-  :type '(regexp :tag "<span class="quote">HARD SPACE Chars</span>")
+Used when `whitespace-style' includes `spaces'."
+  :type '(regexp :tag "HARD SPACE Chars")
   :group 'whitespace)
 
 
-(defcustom whitespace-space-regexp "<span class="quote">\\( +\\)</span>"
-  "<span class="quote">*Specify SPACE characters regexp.
+(defcustom whitespace-space-regexp "\\( +\\)"
+  "*Specify SPACE characters regexp.
 
 If you're using `mule' package, there may be other characters
 besides \" \" that should be considered SPACE.
@@ -746,13 +724,13 @@ visualize leading and/or trailing SPACEs.
 NOTE: Enclose always by \\\\( and \\\\) the elements to highlight.
       Use exactly one pair of enclosing \\\\( and \\\\).
 
-Used when `whitespace-style' includes `spaces'.</span>"
-  :type '(regexp :tag "<span class="quote">SPACE Chars</span>")
+Used when `whitespace-style' includes `spaces'."
+  :type '(regexp :tag "SPACE Chars")
   :group 'whitespace)
 
 
-(defcustom whitespace-tab-regexp "<span class="quote">\\(\t+\\)</span>"
-  "<span class="quote">*Specify TAB characters regexp.
+(defcustom whitespace-tab-regexp "\\(\t+\\)"
+  "*Specify TAB characters regexp.
 
 If you're using `mule' package, there may be other characters
 besides \"\\t\" that should be considered TAB.
@@ -768,50 +746,50 @@ visualize leading and/or trailing TABs.
 NOTE: Enclose always by \\\\( and \\\\) the elements to highlight.
       Use exactly one pair of enclosing \\\\( and \\\\).
 
-Used when `whitespace-style' includes `tabs'.</span>"
-  :type '(regexp :tag "<span class="quote">TAB Chars</span>")
+Used when `whitespace-style' includes `tabs'."
+  :type '(regexp :tag "TAB Chars")
   :group 'whitespace)
 
 
 (defcustom whitespace-trailing-regexp
-  "<span class="quote">\\(\\(\t\\| \\|\xA0\\|\x8A0\\|\x920\\|\xE20\\|\xF20\\)+\\)$</span>"
-  "<span class="quote">*Specify trailing characters regexp.
+  "\\(\\(\t\\| \\|\xA0\\|\x8A0\\|\x920\\|\xE20\\|\xF20\\)+\\)$"
+  "*Specify trailing characters regexp.
 
 If you're using `mule' package, there may be other characters besides:
 
    \" \"  \"\\t\"  \"\\xA0\"  \"\\x8A0\"  \"\\x920\"  \"\\xE20\"  \
-\</span>"\\xF20\"<span class="quote">
+\"\\xF20\"
 
 that should be considered blank.
 
 NOTE: Enclose always by \"\\\\(\" and \"\\\\)$\" the elements to highlight.
       Use exactly one pair of enclosing elements above.
 
-Used when `whitespace-style' includes `trailing'.</span>"
-  :type '(regexp :tag "<span class="quote">Trailing Chars</span>")
+Used when `whitespace-style' includes `trailing'."
+  :type '(regexp :tag "Trailing Chars")
   :group 'whitespace)
 
 
-(defcustom whitespace-space-before-tab-regexp "<span class="quote">\\( +\\)\\(\t+\\)</span>"
-  "<span class="quote">*Specify SPACEs before TAB regexp.
+(defcustom whitespace-space-before-tab-regexp "\\( +\\)\\(\t+\\)"
+  "*Specify SPACEs before TAB regexp.
 
 If you're using `mule' package, there may be other characters besides:
 
    \" \"  \"\\t\"  \"\\xA0\"  \"\\x8A0\"  \"\\x920\"  \"\\xE20\"  \
-\</span>"\\xF20\"<span class="quote">
+\"\\xF20\"
 
 that should be considered blank.
 
 Used when `whitespace-style' includes `space-before-tab',
-`space-before-tab::tab' or  `space-before-tab::space'.</span>"
-  :type '(regexp :tag "<span class="quote">SPACEs Before TAB</span>")
+`space-before-tab::tab' or  `space-before-tab::space'."
+  :type '(regexp :tag "SPACEs Before TAB")
   :group 'whitespace)
 
 
 (defcustom whitespace-indentation-regexp
-  '("<span class="quote">^\t*\\(\\( \\{%d\\}\\)+\\)[^\n\t]</span>"
-    . "<span class="quote">^ *\\(\t+\\)[^\n]</span>")
-  "<span class="quote">*Specify regexp for 8 or more SPACEs at beginning of line.
+  '("^\t*\\(\\( \\{%d\\}\\)+\\)[^\n\t]"
+    . "^ *\\(\t+\\)[^\n]")
+  "*Specify regexp for 8 or more SPACEs at beginning of line.
 
 It is a cons where the cons car is used for SPACEs visualization
 and the cons cdr is used for TABs visualization.
@@ -819,51 +797,51 @@ and the cons cdr is used for TABs visualization.
 If you're using `mule' package, there may be other characters besides:
 
    \" \"  \"\\t\"  \"\\xA0\"  \"\\x8A0\"  \"\\x920\"  \"\\xE20\"  \
-\</span>"\\xF20\"<span class="quote">
+\"\\xF20\"
 
 that should be considered blank.
 
 Used when `whitespace-style' includes `indentation',
-`indentation::tab' or  `indentation::space'.</span>"
-  :type '(cons (regexp :tag "<span class="quote">Indentation SPACEs</span>")
-	       (regexp :tag "<span class="quote">Indentation TABs</span>"))
+`indentation::tab' or  `indentation::space'."
+  :type '(cons (regexp :tag "Indentation SPACEs")
+	       (regexp :tag "Indentation TABs"))
   :group 'whitespace)
 
 
-(defcustom whitespace-empty-at-bob-regexp "<span class="quote">\\`\\(\\([ \t]*\n\\)+\\)</span>"
-  "<span class="quote">*Specify regexp for empty lines at beginning of buffer.
+(defcustom whitespace-empty-at-bob-regexp "\\`\\(\\([ \t]*\n\\)+\\)"
+  "*Specify regexp for empty lines at beginning of buffer.
 
 If you're using `mule' package, there may be other characters besides:
 
    \" \"  \"\\t\"  \"\\xA0\"  \"\\x8A0\"  \"\\x920\"  \"\\xE20\"  \
-\</span>"\\xF20\"<span class="quote">
+\"\\xF20\"
 
 that should be considered blank.
 
-Used when `whitespace-style' includes `empty'.</span>"
-  :type '(regexp :tag "<span class="quote">Empty Lines At Beginning Of Buffer</span>")
+Used when `whitespace-style' includes `empty'."
+  :type '(regexp :tag "Empty Lines At Beginning Of Buffer")
   :group 'whitespace)
 
 
-(defcustom whitespace-empty-at-eob-regexp "<span class="quote">^\\([ \t\n]+\\)\\'</span>"
-  "<span class="quote">*Specify regexp for empty lines at end of buffer.
+(defcustom whitespace-empty-at-eob-regexp "^\\([ \t\n]+\\)\\'"
+  "*Specify regexp for empty lines at end of buffer.
 
 If you're using `mule' package, there may be other characters besides:
 
    \" \"  \"\\t\"  \"\\xA0\"  \"\\x8A0\"  \"\\x920\"  \"\\xE20\"  \
-\</span>"\\xF20\"<span class="quote">
+\"\\xF20\"
 
 that should be considered blank.
 
-Used when `whitespace-style' includes `empty'.</span>"
-  :type '(regexp :tag "<span class="quote">Empty Lines At End Of Buffer</span>")
+Used when `whitespace-style' includes `empty'."
+  :type '(regexp :tag "Empty Lines At End Of Buffer")
   :group 'whitespace)
 
 
 (defcustom whitespace-space-after-tab-regexp
-  '("<span class="quote">\t+\\(\\( \\{%d\\}\\)+\\)</span>"
-    . "<span class="quote">\\(\t+\\) +</span>")
-  "<span class="quote">*Specify regexp for 8 or more SPACEs after TAB.
+  '("\t+\\(\\( \\{%d\\}\\)+\\)"
+    . "\\(\t+\\) +")
+  "*Specify regexp for 8 or more SPACEs after TAB.
 
 It is a cons where the cons car is used for SPACEs visualization
 and the cons cdr is used for TABs visualization.
@@ -871,77 +849,77 @@ and the cons cdr is used for TABs visualization.
 If you're using `mule' package, there may be other characters besides:
 
    \" \"  \"\\t\"  \"\\xA0\"  \"\\x8A0\"  \"\\x920\"  \"\\xE20\"  \
-\</span>"\\xF20\"<span class="quote">
+\"\\xF20\"
 
 that should be considered blank.
 
 Used when `whitespace-style' includes `space-after-tab',
-`space-after-tab::tab' or `space-after-tab::space'.</span>"
-  :type '(regexp :tag "<span class="quote">SPACEs After TAB</span>")
+`space-after-tab::tab' or `space-after-tab::space'."
+  :type '(regexp :tag "SPACEs After TAB")
   :group 'whitespace)
 
 
 (defcustom whitespace-line-column 80
-  "<span class="quote">*Specify column beyond which the line is highlighted.
+  "*Specify column beyond which the line is highlighted.
 
-Used when `whitespace-style' includes `lines' or `lines-tail'.</span>"
-  :type '(integer :tag "<span class="quote">Line Length</span>")
+Used when `whitespace-style' includes `lines' or `lines-tail'."
+  :type '(integer :tag "Line Length")
   :group 'whitespace)
 
 
-<span class="linecomment">;; Hacked from `visible-whitespace-mappings' in visws.el</span>
+;; Hacked from `visible-whitespace-mappings' in visws.el
 (defcustom whitespace-display-mappings
-  (if (&gt;= emacs-major-version 23)
-      <span class="linecomment">;; Emacs 23 and higher:</span>
+  (if (>= emacs-major-version 23)
+      ;; Emacs 23 and higher:
       '(
-	(space-mark   ?\     [?\xB7]       [?.]) <span class="linecomment">; space - centered dot</span>
-	(space-mark   ?\xA0  [?\xA4]       [?_]) <span class="linecomment">; hard space - currency</span>
-	(space-mark   ?\x8A0 [?\x8A4]      [?_]) <span class="linecomment">; hard space - currency</span>
-	(space-mark   ?\x920 [?\x924]      [?_]) <span class="linecomment">; hard space - currency</span>
-	(space-mark   ?\xE20 [?\xE24]      [?_]) <span class="linecomment">; hard space - currency</span>
-	(space-mark   ?\xF20 [?\xF24]      [?_]) <span class="linecomment">; hard space - currency</span>
-	<span class="linecomment">;; NEWLINE is displayed using the face `whitespace-newline'</span>
-	(newline-mark ?\n    [?$ ?\n])	<span class="linecomment">; eol - dollar sign</span>
-	<span class="linecomment">;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow</span>
-	<span class="linecomment">;; (newline-mark ?\n    [?\xB6 ?\n]   [?$ ?\n])	; eol - pilcrow</span>
-	<span class="linecomment">;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n])	; eol - overscore</span>
-	<span class="linecomment">;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n])	; eol - negation</span>
-	<span class="linecomment">;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n])	; eol - grade</span>
-	<span class="linecomment">;;</span>
-	<span class="linecomment">;; WARNING: the mapping below has a problem.</span>
-	<span class="linecomment">;; When a TAB occupies exactly one column, it will display the</span>
-	<span class="linecomment">;; character ?\xBB at that column followed by a TAB which goes to</span>
-	<span class="linecomment">;; the next TAB column.</span>
-	<span class="linecomment">;; If this is a problem for you, please, comment the line below.</span>
-	(tab-mark     ?\t    [?\xBB ?\t]   [?\\ ?\t]) <span class="linecomment">; tab - left quote mark</span>
+	(space-mark   ?\     [?\xB7]       [?.]) ; space - centered dot
+	(space-mark   ?\xA0  [?\xA4]       [?_]) ; hard space - currency
+	(space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
+	(space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
+	(space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
+	(space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
+	;; NEWLINE is displayed using the face `whitespace-newline'
+	(newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
+	;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
+	;; (newline-mark ?\n    [?\xB6 ?\n]   [?$ ?\n])	; eol - pilcrow
+	;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n])	; eol - overscore
+	;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n])	; eol - negation
+	;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n])	; eol - grade
+	;;
+	;; WARNING: the mapping below has a problem.
+	;; When a TAB occupies exactly one column, it will display the
+	;; character ?\xBB at that column followed by a TAB which goes to
+	;; the next TAB column.
+	;; If this is a problem for you, please, comment the line below.
+	(tab-mark     ?\t    [?\xBB ?\t]   [?\\ ?\t]) ; tab - left quote mark
 	)
-    <span class="linecomment">;; Emacs 21 and 22:</span>
-    <span class="linecomment">;; Due to limitations of glyph representation, the char code can not</span>
-    <span class="linecomment">;; be above ?\x1FFFF.  Probably, this will be fixed after Emacs</span>
-    <span class="linecomment">;; unicode merging.</span>
+    ;; Emacs 21 and 22:
+    ;; Due to limitations of glyph representation, the char code can not
+    ;; be above ?\x1FFFF.  Probably, this will be fixed after Emacs
+    ;; unicode merging.
     '(
-      (space-mark   ?\     [?\xB7]       [?.]) <span class="linecomment">; space - centered dot</span>
-      (space-mark   ?\xA0  [?\xA4]       [?_]) <span class="linecomment">; hard space - currency</span>
-      (space-mark   ?\x8A0 [?\x8A4]      [?_]) <span class="linecomment">; hard space - currency</span>
-      (space-mark   ?\x920 [?\x924]      [?_]) <span class="linecomment">; hard space - currency</span>
-      (space-mark   ?\xE20 [?\xE24]      [?_]) <span class="linecomment">; hard space - currency</span>
-      (space-mark   ?\xF20 [?\xF24]      [?_]) <span class="linecomment">; hard space - currency</span>
-      <span class="linecomment">;; NEWLINE is displayed using the face `whitespace-newline'</span>
-      (newline-mark ?\n    [?$ ?\n])	<span class="linecomment">; eol - dollar sign</span>
-      <span class="linecomment">;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow</span>
-      <span class="linecomment">;; (newline-mark ?\n    [?\xB6 ?\n]   [?$ ?\n])	; eol - pilcrow</span>
-      <span class="linecomment">;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n])	; eol - overscore</span>
-      <span class="linecomment">;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n])	; eol - negation</span>
-      <span class="linecomment">;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n])	; eol - grade</span>
-      <span class="linecomment">;;</span>
-      <span class="linecomment">;; WARNING: the mapping below has a problem.</span>
-      <span class="linecomment">;; When a TAB occupies exactly one column, it will display the</span>
-      <span class="linecomment">;; character ?\xBB at that column followed by a TAB which goes to</span>
-      <span class="linecomment">;; the next TAB column.</span>
-      <span class="linecomment">;; If this is a problem for you, please, comment the line below.</span>
-      (tab-mark     ?\t    [?\xBB ?\t]   [?\\ ?\t]) <span class="linecomment">; tab - left quote mark</span>
+      (space-mark   ?\     [?\xB7]       [?.]) ; space - centered dot
+      (space-mark   ?\xA0  [?\xA4]       [?_]) ; hard space - currency
+      (space-mark   ?\x8A0 [?\x8A4]      [?_]) ; hard space - currency
+      (space-mark   ?\x920 [?\x924]      [?_]) ; hard space - currency
+      (space-mark   ?\xE20 [?\xE24]      [?_]) ; hard space - currency
+      (space-mark   ?\xF20 [?\xF24]      [?_]) ; hard space - currency
+      ;; NEWLINE is displayed using the face `whitespace-newline'
+      (newline-mark ?\n    [?$ ?\n])	; eol - dollar sign
+      ;; (newline-mark ?\n    [?\u21B5 ?\n] [?$ ?\n])	; eol - downwards arrow
+      ;; (newline-mark ?\n    [?\xB6 ?\n]   [?$ ?\n])	; eol - pilcrow
+      ;; (newline-mark ?\n    [?\x8AF ?\n]  [?$ ?\n])	; eol - overscore
+      ;; (newline-mark ?\n    [?\x8AC ?\n]  [?$ ?\n])	; eol - negation
+      ;; (newline-mark ?\n    [?\x8B0 ?\n]  [?$ ?\n])	; eol - grade
+      ;;
+      ;; WARNING: the mapping below has a problem.
+      ;; When a TAB occupies exactly one column, it will display the
+      ;; character ?\xBB at that column followed by a TAB which goes to
+      ;; the next TAB column.
+      ;; If this is a problem for you, please, comment the line below.
+      (tab-mark     ?\t    [?\xBB ?\t]   [?\\ ?\t]) ; tab - left quote mark
       ))
-  "<span class="quote">*Specify an alist of mappings for displaying characters.
+  "*Specify an alist of mappings for displaying characters.
 
 Each element has the following form:
 
@@ -969,24 +947,24 @@ The NEWLINE character is displayed using the face given by
 `whitespace-newline' variable.
 
 Used when `whitespace-style' includes `tab-mark', `space-mark' or
-`newline-mark'.</span>"
+`newline-mark'."
   :type '(repeat
-	  (list :tag "<span class="quote">Character Mapping</span>"
-		(choice :tag "<span class="quote">Char Kind</span>"
-			(const :tag "<span class="quote">Tab</span>" tab-mark)
-			(const :tag "<span class="quote">Space</span>" space-mark)
-			(const :tag "<span class="quote">Newline</span>" newline-mark))
-		(character :tag "<span class="quote">Char</span>")
-		(repeat :inline t :tag "<span class="quote">Vector List</span>"
-			(vector :tag "<span class="quote"></span>"
+	  (list :tag "Character Mapping"
+		(choice :tag "Char Kind"
+			(const :tag "Tab" tab-mark)
+			(const :tag "Space" space-mark)
+			(const :tag "Newline" newline-mark))
+		(character :tag "Char")
+		(repeat :inline t :tag "Vector List"
+			(vector :tag ""
 				(repeat :inline t
-					:tag "<span class="quote">Vector Characters</span>"
-					(character :tag "<span class="quote">Char</span>"))))))
+					:tag "Vector Characters"
+					(character :tag "Char"))))))
   :group 'whitespace)
 
 
 (defcustom whitespace-global-modes t
-  "<span class="quote">*Modes for which global `whitespace-mode' is automagically turned on.
+  "*Modes for which global `whitespace-mode' is automagically turned on.
 
 Global `whitespace-mode' is controlled by the command
 `global-whitespace-mode'.
@@ -1004,20 +982,20 @@ of the list is negated if it begins with `not'.  For example:
    (c-mode c++-mode)
 
 means that `whitespace-mode' is turned on for buffers in C and
-C++ modes only.</span>"
-  :type '(choice :tag "<span class="quote">Global Modes</span>"
-		 (const :tag "<span class="quote">None</span>" nil)
-		 (const :tag "<span class="quote">All</span>" t)
-		 (set :menu-tag "<span class="quote">Mode Specific</span>" :tag "<span class="quote">Modes</span>"
+C++ modes only."
+  :type '(choice :tag "Global Modes"
+		 (const :tag "None" nil)
+		 (const :tag "All" t)
+		 (set :menu-tag "Mode Specific" :tag "Modes"
 		      :value (not)
-		      (const :tag "<span class="quote">Except</span>" not)
+		      (const :tag "Except" not)
 		      (repeat :inline t
-			      (symbol :tag "<span class="quote">Mode</span>"))))
+			      (symbol :tag "Mode"))))
   :group 'whitespace)
 
 
 (defcustom whitespace-action nil
-  "<span class="quote">*Specify which action is taken when a buffer is visited or written.
+  "*Specify which action is taken when a buffer is visited or written.
 
 It's a list containing some or all of the following values:
 
@@ -1043,26 +1021,26 @@ It's a list containing some or all of the following values:
 			is included in `whitespace-action' and the
 			buffer is read-only.
 
-Any other value is treated as nil.</span>"
-  :type '(choice :tag "<span class="quote">Actions</span>"
-		 (const :tag "<span class="quote">None</span>" nil)
-		 (repeat :tag "<span class="quote">Action List</span>"
-		  (choice :tag "<span class="quote">Action</span>"
-			  (const :tag "<span class="quote">Cleanup When On</span>" cleanup)
-			  (const :tag "<span class="quote">Report On Bogus</span>" report-on-bogus)
-			  (const :tag "<span class="quote">Auto Cleanup</span>" auto-cleanup)
-			  (const :tag "<span class="quote">Abort On Bogus</span>" abort-on-bogus)
-			  (const :tag "<span class="quote">Warn If Read-Only</span>" warn-if-read-only))))
+Any other value is treated as nil."
+  :type '(choice :tag "Actions"
+		 (const :tag "None" nil)
+		 (repeat :tag "Action List"
+		  (choice :tag "Action"
+			  (const :tag "Cleanup When On" cleanup)
+			  (const :tag "Report On Bogus" report-on-bogus)
+			  (const :tag "Auto Cleanup" auto-cleanup)
+			  (const :tag "Abort On Bogus" abort-on-bogus)
+			  (const :tag "Warn If Read-Only" warn-if-read-only))))
   :group 'whitespace)
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; User commands - Local mode</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; User commands - Local mode
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (define-minor-mode whitespace-mode
-  "<span class="quote">Toggle whitespace minor mode visualization (\"ws\" on modeline).
+  "Toggle whitespace minor mode visualization (\"ws\" on modeline).
 
 If ARG is null, toggle whitespace visualization.
 If ARG is a number greater than zero, turn on visualization;
@@ -1070,24 +1048,24 @@ otherwise, turn off visualization.
 Only useful with a windowing system.
 
 See also `whitespace-style', `whitespace-newline' and
-`whitespace-display-mappings'.</span>"
-  :lighter    "<span class="quote"> ws</span>"
+`whitespace-display-mappings'."
+  :lighter    " ws"
   :init-value nil
   :global     nil
   :group      'whitespace
   (cond
-   (noninteractive			<span class="linecomment">; running a batch job</span>
+   (noninteractive			; running a batch job
     (setq whitespace-mode nil))
-   (whitespace-mode			<span class="linecomment">; whitespace-mode on</span>
+   (whitespace-mode			; whitespace-mode on
     (whitespace-turn-on)
     (whitespace-action-when-on))
-   (t					<span class="linecomment">; whitespace-mode off</span>
+   (t					; whitespace-mode off
     (whitespace-turn-off))))
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (define-minor-mode whitespace-newline-mode
-  "<span class="quote">Toggle NEWLINE minor mode visualization (\"nl\" on modeline).
+  "Toggle NEWLINE minor mode visualization (\"nl\" on modeline).
 
 If ARG is null, toggle NEWLINE visualization.
 If ARG is a number greater than zero, turn on visualization;
@@ -1099,24 +1077,24 @@ exclusively.  For other visualizations, including NEWLINE
 visualization together with (HARD) SPACEs and/or TABs, please,
 use `whitespace-mode'.
 
-See also `whitespace-newline' and `whitespace-display-mappings'.</span>"
-  :lighter    "<span class="quote"> nl</span>"
+See also `whitespace-newline' and `whitespace-display-mappings'."
+  :lighter    " nl"
   :init-value nil
   :global     nil
   :group      'whitespace
   (let ((whitespace-style '(newline-mark newline)))
     (whitespace-mode whitespace-newline-mode)
-    <span class="linecomment">;; sync states (running a batch job)</span>
+    ;; sync states (running a batch job)
     (setq whitespace-newline-mode whitespace-mode)))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; User commands - Global mode</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; User commands - Global mode
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (define-minor-mode global-whitespace-mode
-  "<span class="quote">Toggle whitespace global minor mode visualization (\"WS\" on modeline).
+  "Toggle whitespace global minor mode visualization (\"WS\" on modeline).
 
 If ARG is null, toggle whitespace visualization.
 If ARG is a number greater than zero, turn on visualization;
@@ -1124,31 +1102,31 @@ otherwise, turn off visualization.
 Only useful with a windowing system.
 
 See also `whitespace-style', `whitespace-newline' and
-`whitespace-display-mappings'.</span>"
-  :lighter    "<span class="quote"> WS</span>"
+`whitespace-display-mappings'."
+  :lighter    " WS"
   :init-value nil
   :global     t
   :group      'whitespace
   (cond
-   (noninteractive			<span class="linecomment">; running a batch job</span>
+   (noninteractive			; running a batch job
     (setq global-whitespace-mode nil))
-   (global-whitespace-mode		<span class="linecomment">; global-whitespace-mode on</span>
+   (global-whitespace-mode		; global-whitespace-mode on
     (save-excursion
       (add-hook (if (boundp 'find-file-hook)
 		    'find-file-hook
 		  'find-file-hooks)
 		'whitespace-turn-on-if-enabled)
-      (dolist (buffer (buffer-list))	<span class="linecomment">; adjust all local mode</span>
+      (dolist (buffer (buffer-list))	; adjust all local mode
 	(set-buffer buffer)
 	(unless whitespace-mode
 	  (whitespace-turn-on-if-enabled)))))
-   (t					<span class="linecomment">; global-whitespace-mode off</span>
+   (t					; global-whitespace-mode off
     (save-excursion
       (remove-hook (if (boundp 'find-file-hook)
 		       'find-file-hook
 		     'find-file-hooks)
 		   'whitespace-turn-on-if-enabled)
-      (dolist (buffer (buffer-list))	<span class="linecomment">; adjust all local mode</span>
+      (dolist (buffer (buffer-list))	; adjust all local mode
 	(set-buffer buffer)
 	(unless whitespace-mode
 	  (whitespace-turn-off)))))))
@@ -1163,23 +1141,23 @@ See also `whitespace-style', `whitespace-newline' and
 	    (memq major-mode whitespace-global-modes)))
 	 (t nil))
     (let (inhibit-quit)
-      <span class="linecomment">;; Don't turn on whitespace mode if...</span>
+      ;; Don't turn on whitespace mode if...
       (or
-       <span class="linecomment">;; ...we don't have a display (we're running a batch job)</span>
+       ;; ...we don't have a display (we're running a batch job)
        noninteractive
-       <span class="linecomment">;; ...or if the buffer is invisible (name starts with a space)</span>
+       ;; ...or if the buffer is invisible (name starts with a space)
        (eq (aref (buffer-name) 0) ?\ )
-       <span class="linecomment">;; ...or if the buffer is temporary (name starts with *)</span>
+       ;; ...or if the buffer is temporary (name starts with *)
        (and (eq (aref (buffer-name) 0) ?*)
-	    <span class="linecomment">;; except the scratch buffer.</span>
-	    (not (string= (buffer-name) "<span class="quote">*scratch*</span>")))
-       <span class="linecomment">;; Otherwise, turn on whitespace mode.</span>
+	    ;; except the scratch buffer.
+	    (not (string= (buffer-name) "*scratch*")))
+       ;; Otherwise, turn on whitespace mode.
        (whitespace-turn-on)))))
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (define-minor-mode global-whitespace-newline-mode
-  "<span class="quote">Toggle NEWLINE global minor mode visualization (\"NL\" on modeline).
+  "Toggle NEWLINE global minor mode visualization (\"NL\" on modeline).
 
 If ARG is null, toggle NEWLINE visualization.
 If ARG is a number greater than zero, turn on visualization;
@@ -1191,19 +1169,19 @@ visualization exclusively.  For other visualizations, including
 NEWLINE visualization together with (HARD) SPACEs and/or TABs,
 please, use `global-whitespace-mode'.
 
-See also `whitespace-newline' and `whitespace-display-mappings'.</span>"
-  :lighter    "<span class="quote"> NL</span>"
+See also `whitespace-newline' and `whitespace-display-mappings'."
+  :lighter    " NL"
   :init-value nil
   :global     t
   :group      'whitespace
   (let ((whitespace-style '(newline-mark newline)))
     (global-whitespace-mode global-whitespace-newline-mode)
-    <span class="linecomment">;; sync states (running a batch job)</span>
+    ;; sync states (running a batch job)
     (setq global-whitespace-newline-mode global-whitespace-mode)))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; User commands - Toggle</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; User commands - Toggle
 
 
 (defconst whitespace-style-value-list
@@ -1223,12 +1201,12 @@ See also `whitespace-newline' and `whitespace-display-mappings'.</span>"
     space-before-tab
     space-before-tab::tab
     space-before-tab::space
-    help-newline       <span class="linecomment">; value used by `whitespace-insert-option-mark'</span>
+    help-newline       ; value used by `whitespace-insert-option-mark'
     tab-mark
     space-mark
     newline-mark
     )
-  "<span class="quote">List of valid `whitespace-style' values.</span>")
+  "List of valid `whitespace-style' values.")
 
 
 (defconst whitespace-toggle-option-alist
@@ -1253,7 +1231,7 @@ See also `whitespace-newline' and `whitespace-display-mappings'.</span>"
     (?N    . newline-mark)
     (?x    . whitespace-style)
     )
-  "<span class="quote">Alist of toggle options.
+  "Alist of toggle options.
 
 Each element has the form:
 
@@ -1264,22 +1242,22 @@ Where:
 CHAR	is a char which the user will have to type.
 
 SYMBOL	is a valid symbol associated with CHAR.
-	See `whitespace-style-value-list'.</span>")
+	See `whitespace-style-value-list'.")
 
 
 (defvar whitespace-active-style nil
-  "<span class="quote">Used to save locally `whitespace-style' value.</span>")
+  "Used to save locally `whitespace-style' value.")
 
 (defvar whitespace-indent-tabs-mode indent-tabs-mode
-  "<span class="quote">Used to save locally `indent-tabs-mode' value.</span>")
+  "Used to save locally `indent-tabs-mode' value.")
 
 (defvar whitespace-tab-width tab-width
-  "<span class="quote">Used to save locally `tab-width' value.</span>")
+  "Used to save locally `tab-width' value.")
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (defun whitespace-toggle-options (arg)
-  "<span class="quote">Toggle local `whitespace-mode' options.
+  "Toggle local `whitespace-mode' options.
 
 If local whitespace-mode is off, toggle the option given by ARG
 and turn on local whitespace-mode.
@@ -1344,7 +1322,7 @@ The valid symbols are:
 
 Only useful with a windowing system.
 
-See `whitespace-style' and `indent-tabs-mode' for documentation.</span>"
+See `whitespace-style' and `indent-tabs-mode' for documentation."
   (interactive (whitespace-interactive-char t))
   (let ((whitespace-style
 	 (whitespace-toggle-list t arg whitespace-active-style)))
@@ -1353,12 +1331,12 @@ See `whitespace-style' and `indent-tabs-mode' for documentation.</span>"
 
 
 (defvar whitespace-toggle-style nil
-  "<span class="quote">Used to toggle the global `whitespace-style' value.</span>")
+  "Used to toggle the global `whitespace-style' value.")
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (defun global-whitespace-toggle-options (arg)
-  "<span class="quote">Toggle global `whitespace-mode' options.
+  "Toggle global `whitespace-mode' options.
 
 If global whitespace-mode is off, toggle the option given by ARG
 and turn on global whitespace-mode.
@@ -1423,7 +1401,7 @@ The valid symbols are:
 
 Only useful with a windowing system.
 
-See `whitespace-style' and `indent-tabs-mode' for documentation.</span>"
+See `whitespace-style' and `indent-tabs-mode' for documentation."
   (interactive (whitespace-interactive-char nil))
   (let ((whitespace-style
 	 (whitespace-toggle-list nil arg whitespace-toggle-style)))
@@ -1432,13 +1410,13 @@ See `whitespace-style' and `indent-tabs-mode' for documentation.</span>"
     (global-whitespace-mode 1)))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; User commands - Cleanup</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; User commands - Cleanup
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (defun whitespace-cleanup ()
-  "<span class="quote">Cleanup some blank problems in all buffer or at region.
+  "Cleanup some blank problems in all buffer or at region.
 
 It usually applies to the whole buffer, but in transient mark
 mode when the mark is active, it applies to the region.  It also
@@ -1488,31 +1466,31 @@ The problems cleaned up are:
    `space-after-tab::space', replace TABs by SPACEs.
 
 See `whitespace-style', `indent-tabs-mode' and `tab-width' for
-documentation.</span>"
-  (interactive "<span class="quote">@</span>")
+documentation."
+  (interactive "@")
   (cond
-   <span class="linecomment">;; read-only buffer</span>
+   ;; read-only buffer
    (buffer-read-only
-    (whitespace-warn-read-only "<span class="quote">cleanup</span>"))
-   <span class="linecomment">;; region active</span>
+    (whitespace-warn-read-only "cleanup"))
+   ;; region active
    ((and (or transient-mark-mode
 	     current-prefix-arg)
 	 mark-active)
-    <span class="linecomment">;; PROBLEMs 1 and 2 are not handled in region</span>
-    <span class="linecomment">;; PROBLEM 3: 8 or more SPACEs at bol</span>
-    <span class="linecomment">;; PROBLEM 4: SPACEs before TAB</span>
-    <span class="linecomment">;; PROBLEM 5: SPACEs or TABs at eol</span>
-    <span class="linecomment">;; PROBLEM 6: 8 or more SPACEs after TAB</span>
+    ;; PROBLEMs 1 and 2 are not handled in region
+    ;; PROBLEM 3: 8 or more SPACEs at bol
+    ;; PROBLEM 4: SPACEs before TAB
+    ;; PROBLEM 5: SPACEs or TABs at eol
+    ;; PROBLEM 6: 8 or more SPACEs after TAB
     (whitespace-cleanup-region (region-beginning) (region-end)))
-   <span class="linecomment">;; whole buffer</span>
+   ;; whole buffer
    (t
     (save-excursion
       (save-match-data
-	<span class="linecomment">;; PROBLEM 1: empty lines at bob</span>
-	<span class="linecomment">;; PROBLEM 2: empty lines at eob</span>
-	<span class="linecomment">;; ACTION: remove all empty lines at bob and/or eob</span>
+	;; PROBLEM 1: empty lines at bob
+	;; PROBLEM 2: empty lines at eob
+	;; ACTION: remove all empty lines at bob and/or eob
 	(when (memq 'empty whitespace-style)
-	  (let (overwrite-mode)		<span class="linecomment">; enforce no overwrite</span>
+	  (let (overwrite-mode)		; enforce no overwrite
 	    (goto-char (point-min))
 	    (when (re-search-forward
 		   whitespace-empty-at-bob-regexp nil t)
@@ -1520,16 +1498,16 @@ documentation.</span>"
 	    (when (re-search-forward
 		   whitespace-empty-at-eob-regexp nil t)
 	      (delete-region (match-beginning 1) (match-end 1)))))))
-    <span class="linecomment">;; PROBLEM 3: 8 or more SPACEs at bol</span>
-    <span class="linecomment">;; PROBLEM 4: SPACEs before TAB</span>
-    <span class="linecomment">;; PROBLEM 5: SPACEs or TABs at eol</span>
-    <span class="linecomment">;; PROBLEM 6: 8 or more SPACEs after TAB</span>
+    ;; PROBLEM 3: 8 or more SPACEs at bol
+    ;; PROBLEM 4: SPACEs before TAB
+    ;; PROBLEM 5: SPACEs or TABs at eol
+    ;; PROBLEM 6: 8 or more SPACEs after TAB
     (whitespace-cleanup-region (point-min) (point-max)))))
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (defun whitespace-cleanup-region (start end)
-  "<span class="quote">Cleanup some blank problems at region.
+  "Cleanup some blank problems at region.
 
 The problems cleaned up are:
 
@@ -1566,25 +1544,25 @@ The problems cleaned up are:
    `space-after-tab::space', replace TABs by SPACEs.
 
 See `whitespace-style', `indent-tabs-mode' and `tab-width' for
-documentation.</span>"
-  (interactive "<span class="quote">@r</span>")
+documentation."
+  (interactive "@r")
   (if buffer-read-only
-      <span class="linecomment">;; read-only buffer</span>
-      (whitespace-warn-read-only "<span class="quote">cleanup region</span>")
-    <span class="linecomment">;; non-read-only buffer</span>
+      ;; read-only buffer
+      (whitespace-warn-read-only "cleanup region")
+    ;; non-read-only buffer
     (let ((rstart           (min start end))
 	  (rend             (copy-marker (max start end)))
 	  (indent-tabs-mode whitespace-indent-tabs-mode)
 	  (tab-width        whitespace-tab-width)
-	  overwrite-mode		<span class="linecomment">; enforce no overwrite</span>
+	  overwrite-mode		; enforce no overwrite
 	  tmp)
       (save-excursion
 	(save-match-data
-	  <span class="linecomment">;; PROBLEM 1: 8 or more SPACEs at bol</span>
+	  ;; PROBLEM 1: 8 or more SPACEs at bol
 	  (cond
-	   <span class="linecomment">;; ACTION: replace 8 or more SPACEs at bol by TABs, if</span>
-	   <span class="linecomment">;; `indent-tabs-mode' is non-nil; otherwise, replace TABs</span>
-	   <span class="linecomment">;; by SPACEs.</span>
+	   ;; ACTION: replace 8 or more SPACEs at bol by TABs, if
+	   ;; `indent-tabs-mode' is non-nil; otherwise, replace TABs
+	   ;; by SPACEs.
 	   ((memq 'indentation whitespace-style)
 	    (let ((regexp (whitespace-indentation-regexp)))
 	      (goto-char rstart)
@@ -1594,82 +1572,82 @@ documentation.</span>"
 		(delete-horizontal-space)
 		(unless (eolp)
 		  (indent-to tmp)))))
-	   <span class="linecomment">;; ACTION: replace 8 or more SPACEs at bol by TABs.</span>
+	   ;; ACTION: replace 8 or more SPACEs at bol by TABs.
 	   ((memq 'indentation::tab whitespace-style)
 	    (whitespace-replace-action
 	     'tabify rstart rend
 	     (whitespace-indentation-regexp 'tab) 0))
-	   <span class="linecomment">;; ACTION: replace TABs by SPACEs.</span>
+	   ;; ACTION: replace TABs by SPACEs.
 	   ((memq 'indentation::space whitespace-style)
 	    (whitespace-replace-action
 	     'untabify rstart rend
 	     (whitespace-indentation-regexp 'space) 0)))
-	  <span class="linecomment">;; PROBLEM 3: SPACEs or TABs at eol</span>
-	  <span class="linecomment">;; ACTION: remove all SPACEs or TABs at eol</span>
+	  ;; PROBLEM 3: SPACEs or TABs at eol
+	  ;; ACTION: remove all SPACEs or TABs at eol
 	  (when (memq 'trailing whitespace-style)
 	    (whitespace-replace-action
 	     'delete-region rstart rend
 	     whitespace-trailing-regexp 1))
-	  <span class="linecomment">;; PROBLEM 4: 8 or more SPACEs after TAB</span>
+	  ;; PROBLEM 4: 8 or more SPACEs after TAB
 	  (cond
-	   <span class="linecomment">;; ACTION: replace 8 or more SPACEs by TABs, if</span>
-	   <span class="linecomment">;; `indent-tabs-mode' is non-nil; otherwise, replace TABs</span>
-	   <span class="linecomment">;; by SPACEs.</span>
+	   ;; ACTION: replace 8 or more SPACEs by TABs, if
+	   ;; `indent-tabs-mode' is non-nil; otherwise, replace TABs
+	   ;; by SPACEs.
 	   ((memq 'space-after-tab whitespace-style)
 	    (whitespace-replace-action
 	     (if whitespace-indent-tabs-mode 'tabify 'untabify)
 	     rstart rend (whitespace-space-after-tab-regexp) 1))
-	   <span class="linecomment">;; ACTION: replace 8 or more SPACEs by TABs.</span>
+	   ;; ACTION: replace 8 or more SPACEs by TABs.
 	   ((memq 'space-after-tab::tab whitespace-style)
 	    (whitespace-replace-action
 	     'tabify rstart rend
 	     (whitespace-space-after-tab-regexp 'tab) 1))
-	   <span class="linecomment">;; ACTION: replace TABs by SPACEs.</span>
+	   ;; ACTION: replace TABs by SPACEs.
 	   ((memq 'space-after-tab::space whitespace-style)
 	    (whitespace-replace-action
 	     'untabify rstart rend
 	     (whitespace-space-after-tab-regexp 'space) 1)))
-	  <span class="linecomment">;; PROBLEM 2: SPACEs before TAB</span>
+	  ;; PROBLEM 2: SPACEs before TAB
 	  (cond
-	   <span class="linecomment">;; ACTION: replace SPACEs before TAB by TABs, if</span>
-	   <span class="linecomment">;; `indent-tabs-mode' is non-nil; otherwise, replace TABs</span>
-	   <span class="linecomment">;; by SPACEs.</span>
+	   ;; ACTION: replace SPACEs before TAB by TABs, if
+	   ;; `indent-tabs-mode' is non-nil; otherwise, replace TABs
+	   ;; by SPACEs.
 	   ((memq 'space-before-tab whitespace-style)
 	    (whitespace-replace-action
 	     (if whitespace-indent-tabs-mode 'tabify 'untabify)
 	     rstart rend whitespace-space-before-tab-regexp
 	     (if whitespace-indent-tabs-mode 1 2)))
-	   <span class="linecomment">;; ACTION: replace SPACEs before TAB by TABs.</span>
+	   ;; ACTION: replace SPACEs before TAB by TABs.
 	   ((memq 'space-before-tab::tab whitespace-style)
 	    (whitespace-replace-action
 	     'tabify rstart rend
 	     whitespace-space-before-tab-regexp 1))
-	   <span class="linecomment">;; ACTION: replace TABs by SPACEs.</span>
+	   ;; ACTION: replace TABs by SPACEs.
 	   ((memq 'space-before-tab::space whitespace-style)
 	    (whitespace-replace-action
 	     'untabify rstart rend
 	     whitespace-space-before-tab-regexp 2)))))
-      (set-marker rend nil))))		<span class="linecomment">; point marker to nowhere</span>
+      (set-marker rend nil))))		; point marker to nowhere
 
 
 (defun whitespace-replace-action (action rstart rend regexp index)
-  "<span class="quote">Do ACTION in the string matched by REGEXP between RSTART and REND.
+  "Do ACTION in the string matched by REGEXP between RSTART and REND.
 
 INDEX is the level group matched by REGEXP and used by ACTION.
 
-See also `tab-width'.</span>"
+See also `tab-width'."
   (goto-char rstart)
   (while (re-search-forward regexp rend t)
     (goto-char (match-end index))
     (funcall action (match-beginning index) (match-end index))))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; User command - report</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; User command - report
 
 
 (defun whitespace-regexp (regexp &optional kind)
-  "<span class="quote">Return REGEXP depending on `whitespace-indent-tabs-mode'.</span>"
+  "Return REGEXP depending on `whitespace-indent-tabs-mode'."
   (cond
    ((or (eq kind 'tab)
 	whitespace-indent-tabs-mode)
@@ -1680,12 +1658,12 @@ See also `tab-width'.</span>"
 
 
 (defun whitespace-indentation-regexp (&optional kind)
-  "<span class="quote">Return the indentation regexp depending on `whitespace-indent-tabs-mode'.</span>"
+  "Return the indentation regexp depending on `whitespace-indent-tabs-mode'."
   (whitespace-regexp whitespace-indentation-regexp kind))
 
 
 (defun whitespace-space-after-tab-regexp (&optional kind)
-  "<span class="quote">Return the space-after-tab regexp depending on `whitespace-indent-tabs-mode'.</span>"
+  "Return the space-after-tab regexp depending on `whitespace-indent-tabs-mode'."
   (whitespace-regexp whitespace-space-after-tab-regexp kind))
 
 
@@ -1704,12 +1682,12 @@ See also `tab-width'.</span>"
    (cons 'space-after-tab::tab    nil)
    (cons 'space-after-tab::space  nil)
    )
-   "<span class="quote">List of whitespace bogus symbol and corresponding regexp.</span>")
+   "List of whitespace bogus symbol and corresponding regexp.")
 
 
 (defconst whitespace-report-text
-  '( <span class="linecomment">;; `indent-tabs-mode' has non-nil value</span>
-    "<span class="quote">\
+  '( ;; `indent-tabs-mode' has non-nil value
+    "\
  Whitespace Report
 
  Current Setting                       Whitespace Problem
@@ -1728,9 +1706,9 @@ See also `tab-width'.</span>"
  space-after-tab::space   []     []  8 or more SPACEs after TAB: TABs
 
  indent-tabs-mode =
- tab-width        = \n\n</span>"
-    . <span class="linecomment">;; `indent-tabs-mode' has nil value</span>
-    "<span class="quote">\
+ tab-width        = \n\n"
+    . ;; `indent-tabs-mode' has nil value
+    "\
  Whitespace Report
 
  Current Setting                       Whitespace Problem
@@ -1749,21 +1727,21 @@ See also `tab-width'.</span>"
  space-after-tab::space   []     []  8 or more SPACEs after TAB: TABs
 
  indent-tabs-mode =
- tab-width        = \n\n</span>")
-  "<span class="quote">Text for whitespace bogus report.
+ tab-width        = \n\n")
+  "Text for whitespace bogus report.
 
 It is a cons of strings, where the car part is used when
 `indent-tabs-mode' is non-nil, and the cdr part is used when
-`indent-tabs-mode' is nil.</span>")
+`indent-tabs-mode' is nil.")
 
 
-(defconst whitespace-report-buffer-name "<span class="quote">*Whitespace Report*</span>"
-  "<span class="quote">The buffer name for whitespace bogus report.</span>")
+(defconst whitespace-report-buffer-name "*Whitespace Report*"
+  "The buffer name for whitespace bogus report.")
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (defun whitespace-report (&optional force report-if-bogus)
-  "<span class="quote">Report some whitespace problems in buffer.
+  "Report some whitespace problems in buffer.
 
 Return nil if there is no whitespace problem; otherwise, return
 non-nil.
@@ -1801,15 +1779,15 @@ Report if some of the following whitespace problems exist:
 
 See `whitespace-style' for documentation.
 See also `whitespace-cleanup' and `whitespace-cleanup-region' for
-cleaning up these problems.</span>"
+cleaning up these problems."
   (interactive (list current-prefix-arg))
   (whitespace-report-region (point-min) (point-max)
 			    force report-if-bogus))
 
 
-<span class="linecomment">;;;###autoload</span>
+;;;###autoload
 (defun whitespace-report-region (start end &optional force report-if-bogus)
-  "<span class="quote">Report some whitespace problems in a region.
+  "Report some whitespace problems in a region.
 
 Return nil if there is no whitespace problem; otherwise, return
 non-nil.
@@ -1847,8 +1825,8 @@ Report if some of the following whitespace problems exist:
 
 See `whitespace-style' for documentation.
 See also `whitespace-cleanup' and `whitespace-cleanup-region' for
-cleaning up these problems.</span>"
-  (interactive "<span class="quote">r</span>")
+cleaning up these problems."
+  (interactive "r")
   (setq force (or current-prefix-arg force))
   (save-excursion
     (save-match-data
@@ -1882,8 +1860,8 @@ cleaning up these problems.</span>"
 	       whitespace-report-list)))
 	(when (if report-if-bogus has-bogus t)
 	  (whitespace-kill-buffer whitespace-report-buffer-name)
-	  <span class="linecomment">;; `whitespace-indent-tabs-mode' is local to current buffer</span>
-	  <span class="linecomment">;; `whitespace-tab-width' is local to current buffer</span>
+	  ;; `whitespace-indent-tabs-mode' is local to current buffer
+	  ;; `whitespace-tab-width' is local to current buffer
 	  (let ((ws-indent-tabs-mode whitespace-indent-tabs-mode)
 		(ws-tab-width whitespace-tab-width))
 	    (with-current-buffer (get-buffer-create
@@ -1905,30 +1883,30 @@ cleaning up these problems.</span>"
 	      (whitespace-insert-value ws-tab-width)
 	      (when has-bogus
 		(goto-char (point-max))
-		(insert "<span class="quote"> Type `M-x whitespace-cleanup'</span>"
-			"<span class="quote"> to cleanup the buffer.\n\n</span>"
-			"<span class="quote"> Type `M-x whitespace-cleanup-region'</span>"
-			"<span class="quote"> to cleanup a region.\n\n</span>"))
+		(insert " Type `M-x whitespace-cleanup'"
+			" to cleanup the buffer.\n\n"
+			" Type `M-x whitespace-cleanup-region'"
+			" to cleanup a region.\n\n"))
 	      (whitespace-display-window (current-buffer)))))
 	has-bogus))))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; Internal functions</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Internal functions
 
 
 (defvar whitespace-font-lock-mode nil
-  "<span class="quote">Used to remember whether a buffer had font lock mode on or not.</span>")
+  "Used to remember whether a buffer had font lock mode on or not.")
 
 (defvar whitespace-font-lock nil
-  "<span class="quote">Used to remember whether a buffer initially had font lock on or not.</span>")
+  "Used to remember whether a buffer initially had font lock on or not.")
 
 (defvar whitespace-font-lock-keywords nil
-  "<span class="quote">Used to save locally `font-lock-keywords' value.</span>")
+  "Used to save locally `font-lock-keywords' value.")
 
 
 (defconst whitespace-help-text
-  "<span class="quote">\
+  "\
  Whitespace Toggle Options
 
  FACES
@@ -1956,29 +1934,29 @@ cleaning up these problems.</span>"
 
       x - restore `whitespace-style' value
 
-      ? - display this text\n\n</span>"
-  "<span class="quote">Text for whitespace toggle options.</span>")
+      ? - display this text\n\n"
+  "Text for whitespace toggle options.")
 
 
-(defconst whitespace-help-buffer-name "<span class="quote">*Whitespace Toggle Options*</span>"
-  "<span class="quote">The buffer name for whitespace toggle options.</span>")
+(defconst whitespace-help-buffer-name "*Whitespace Toggle Options*"
+  "The buffer name for whitespace toggle options.")
 
 
 (defun whitespace-insert-value (value)
-  "<span class="quote">Insert VALUE at column 20 of next line.</span>"
+  "Insert VALUE at column 20 of next line."
   (forward-line 1)
   (move-to-column 20 t)
-  (insert (format "<span class="quote">%s</span>" value)))
+  (insert (format "%s" value)))
 
 
 (defun whitespace-mark-x (nchars condition)
-  "<span class="quote">Insert the mark ('X' or ' ') after NCHARS depending on CONDITION.</span>"
+  "Insert the mark ('X' or ' ') after NCHARS depending on CONDITION."
   (forward-char nchars)
-  (insert (if condition "<span class="quote">X</span>" "<span class="quote"> </span>")))
+  (insert (if condition "X" " ")))
 
 
 (defun whitespace-insert-option-mark (the-list the-value)
-  "<span class="quote">Insert the option mark ('X' or ' ') in toggle options buffer.</span>"
+  "Insert the option mark ('X' or ' ') in toggle options buffer."
   (goto-char (point-min))
   (forward-line 2)
   (dolist (sym  the-list)
@@ -1989,7 +1967,7 @@ cleaning up these problems.</span>"
 
 
 (defun whitespace-help-on (style)
-  "<span class="quote">Display the whitespace toggle options.</span>"
+  "Display the whitespace toggle options."
   (unless (get-buffer whitespace-help-buffer-name)
     (delete-other-windows)
     (let ((buffer (get-buffer-create whitespace-help-buffer-name)))
@@ -2003,22 +1981,22 @@ cleaning up these problems.</span>"
 
 
 (defun whitespace-display-window (buffer)
-  "<span class="quote">Display BUFFER in a new window.</span>"
+  "Display BUFFER in a new window."
   (goto-char (point-min))
   (set-buffer-modified-p nil)
   (let ((size (- (window-height)
 		 (max window-min-height
 		      (1+ (count-lines (point-min)
 				       (point-max)))))))
-    (when (&lt;= size 0)
+    (when (<= size 0)
       (kill-buffer buffer)
-      (error "<span class="quote">Frame height is too small; \
-can't split window to display whitespace toggle options</span>"))
+      (error "Frame height is too small; \
+can't split window to display whitespace toggle options"))
     (set-window-buffer (split-window nil size) buffer)))
 
 
 (defun whitespace-kill-buffer (buffer-name)
-  "<span class="quote">Kill buffer BUFFER-NAME and windows related with it.</span>"
+  "Kill buffer BUFFER-NAME and windows related with it."
   (let ((buffer (get-buffer buffer-name)))
     (when buffer
       (delete-windows-on buffer)
@@ -2026,12 +2004,12 @@ can't split window to display whitespace toggle options</span>"))
 
 
 (defun whitespace-help-off ()
-  "<span class="quote">Remove the buffer and window of the whitespace toggle options.</span>"
+  "Remove the buffer and window of the whitespace toggle options."
   (whitespace-kill-buffer whitespace-help-buffer-name))
 
 
 (defun whitespace-interactive-char (local-p)
-  "<span class="quote">Interactive function to read a char and return a symbol.
+  "Interactive function to read a char and return a symbol.
 
 If LOCAL-P is non-nil, it uses a local context; otherwise, it
 uses a global context.
@@ -2065,44 +2043,44 @@ It accepts one of the following chars:
    x	restore `whitespace-style' value
    ?	display brief help
 
-See also `whitespace-toggle-option-alist'.</span>"
+See also `whitespace-toggle-option-alist'."
   (let* ((is-off (not (if local-p
 			  whitespace-mode
 			global-whitespace-mode)))
-	 (style  (cond (is-off  whitespace-style) <span class="linecomment">; use default value</span>
+	 (style  (cond (is-off  whitespace-style) ; use default value
 		       (local-p whitespace-active-style)
 		       (t       whitespace-toggle-style)))
 	 (prompt
-	  (format "<span class="quote">Whitespace Toggle %s (type ? for further options)-</span>"
-		  (if local-p "<span class="quote">Local</span>" "<span class="quote">Global</span>")))
+	  (format "Whitespace Toggle %s (type ? for further options)-"
+		  (if local-p "Local" "Global")))
 	 ch sym)
-    <span class="linecomment">;; read a valid option and get the corresponding symbol</span>
+    ;; read a valid option and get the corresponding symbol
     (save-window-excursion
       (condition-case data
 	  (progn
 	    (while
-		<span class="linecomment">;; while condition</span>
+		;; while condition
 		(progn
 		  (setq ch (read-char prompt))
 		  (not
 		   (setq sym
 			 (cdr
 			  (assq ch whitespace-toggle-option-alist)))))
-	      <span class="linecomment">;; while body</span>
+	      ;; while body
 	      (if (eq ch ?\?)
 		  (whitespace-help-on style)
 		(ding)))
 	    (whitespace-help-off)
-	    (message "<span class="quote"> </span>"))		<span class="linecomment">; clean echo area</span>
-	<span class="linecomment">;; handler</span>
+	    (message " "))		; clean echo area
+	;; handler
 	((quit error)
 	 (whitespace-help-off)
 	 (error (error-message-string data)))))
-    (list sym)))			<span class="linecomment">; return the apropriate symbol</span>
+    (list sym)))			; return the apropriate symbol
 
 
 (defun whitespace-toggle-list (local-p arg the-list)
-  "<span class="quote">Toggle options in THE-LIST based on list ARG.
+  "Toggle options in THE-LIST based on list ARG.
 
 If LOCAL-P is non-nil, it uses a local context; otherwise, it
 uses a global context.
@@ -2110,18 +2088,18 @@ uses a global context.
 ARG is a list of options to be toggled.
 
 THE-LIST is a list of options.  This list will be toggled and the
-resultant list will be returned.</span>"
+resultant list will be returned."
   (unless (if local-p whitespace-mode global-whitespace-mode)
     (setq the-list whitespace-style))
-  (setq the-list (copy-sequence the-list)) <span class="linecomment">; keep original list</span>
+  (setq the-list (copy-sequence the-list)) ; keep original list
   (dolist (sym (if (listp arg) arg (list arg)))
     (cond
-     <span class="linecomment">;; ignore help value</span>
+     ;; ignore help value
      ((eq sym 'help-newline))
-     <span class="linecomment">;; restore default values</span>
+     ;; restore default values
      ((eq sym 'whitespace-style)
       (setq the-list whitespace-style))
-     <span class="linecomment">;; toggle valid values</span>
+     ;; toggle valid values
      ((memq sym whitespace-style-value-list)
       (setq the-list (if (memq sym the-list)
 			 (delq sym the-list)
@@ -2130,17 +2108,17 @@ resultant list will be returned.</span>"
 
 
 (defvar whitespace-display-table nil
-  "<span class="quote">Used to save a local display table.</span>")
+  "Used to save a local display table.")
 
 (defvar whitespace-display-table-was-local nil
-  "<span class="quote">Used to remember whether a buffer initially had a local display table.</span>")
+  "Used to remember whether a buffer initially had a local display table.")
 
 
 (defun whitespace-turn-on ()
-  "<span class="quote">Turn on whitespace visualization.</span>"
-  <span class="linecomment">;; prepare local hooks</span>
+  "Turn on whitespace visualization."
+  ;; prepare local hooks
   (add-hook 'write-file-functions 'whitespace-write-file-hook nil t)
-  <span class="linecomment">;; create whitespace local buffer environment</span>
+  ;; create whitespace local buffer environment
   (set (make-local-variable 'whitespace-font-lock-mode) nil)
   (set (make-local-variable 'whitespace-font-lock) nil)
   (set (make-local-variable 'whitespace-font-lock-keywords) nil)
@@ -2154,14 +2132,14 @@ resultant list will be returned.</span>"
        indent-tabs-mode)
   (set (make-local-variable 'whitespace-tab-width)
        tab-width)
-  <span class="linecomment">;; turn on whitespace</span>
+  ;; turn on whitespace
   (when whitespace-active-style
     (whitespace-color-on)
     (whitespace-display-char-on)))
 
 
 (defun whitespace-turn-off ()
-  "<span class="quote">Turn off whitespace visualization.</span>"
+  "Turn off whitespace visualization."
   (remove-hook 'write-file-functions 'whitespace-write-file-hook t)
   (when whitespace-active-style
     (whitespace-color-off)
@@ -2169,7 +2147,7 @@ resultant list will be returned.</span>"
 
 
 (defun whitespace-style-face-p ()
-  "<span class="quote">Return t if there is some visualization via face.</span>"
+  "Return t if there is some visualization via face."
   (or (memq 'tabs                    whitespace-active-style)
       (memq 'spaces                  whitespace-active-style)
       (memq 'trailing                whitespace-active-style)
@@ -2189,38 +2167,38 @@ resultant list will be returned.</span>"
 
 
 (defun whitespace-color-on ()
-  "<span class="quote">Turn on color visualization.</span>"
+  "Turn on color visualization."
   (when (whitespace-style-face-p)
     (unless whitespace-font-lock
       (setq whitespace-font-lock t
 	    whitespace-font-lock-keywords
 	    (copy-sequence font-lock-keywords)))
-    <span class="linecomment">;; turn off font lock</span>
+    ;; turn off font lock
     (set (make-local-variable 'whitespace-font-lock-mode)
 	 font-lock-mode)
     (font-lock-mode 0)
-    <span class="linecomment">;; add whitespace-mode color into font lock</span>
+    ;; add whitespace-mode color into font lock
     (when (memq 'spaces whitespace-active-style)
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show SPACEs</span>
+	;; Show SPACEs
 	(list whitespace-space-regexp  1 whitespace-space  t)
-	<span class="linecomment">;; Show HARD SPACEs</span>
+	;; Show HARD SPACEs
 	(list whitespace-hspace-regexp 1 whitespace-hspace t))
        t))
     (when (memq 'tabs whitespace-active-style)
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show TABs</span>
+	;; Show TABs
 	(list whitespace-tab-regexp 1 whitespace-tab t))
        t))
     (when (memq 'trailing whitespace-active-style)
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show trailing blanks</span>
+	;; Show trailing blanks
 	(list whitespace-trailing-regexp 1 whitespace-trailing t))
        t))
     (when (or (memq 'lines      whitespace-active-style)
@@ -2228,19 +2206,19 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show "long" lines</span>
+	;; Show "long" lines
 	(list
 	 (format
-	  "<span class="quote">^\\([^\t\n]\\{%s\\}\\|[^\t\n]\\{0,%s\\}\t\\)\\{%d\\}%s\\(.+\\)$</span>"
+	  "^\\([^\t\n]\\{%s\\}\\|[^\t\n]\\{0,%s\\}\t\\)\\{%d\\}%s\\(.+\\)$"
 	  whitespace-tab-width (1- whitespace-tab-width)
 	  (/ whitespace-line-column tab-width)
 	  (let ((rem (% whitespace-line-column whitespace-tab-width)))
 	    (if (zerop rem)
-		"<span class="quote"></span>"
-	      (format "<span class="quote">.\\{%d\\}</span>" rem))))
+		""
+	      (format ".\\{%d\\}" rem))))
 	 (if (memq 'lines whitespace-active-style)
-	     0				<span class="linecomment">; whole line</span>
-	   2)				<span class="linecomment">; line tail</span>
+	     0				; whole line
+	   2)				; line tail
 	 whitespace-line t))
        t))
     (cond
@@ -2248,7 +2226,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show SPACEs before TAB (indent-tabs-mode)</span>
+	;; Show SPACEs before TAB (indent-tabs-mode)
 	(list whitespace-space-before-tab-regexp
 	      (if whitespace-indent-tabs-mode 1 2)
 	      whitespace-space-before-tab t))
@@ -2257,7 +2235,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show SPACEs before TAB (SPACEs)</span>
+	;; Show SPACEs before TAB (SPACEs)
 	(list whitespace-space-before-tab-regexp
 	      1 whitespace-space-before-tab t))
        t))
@@ -2265,7 +2243,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show SPACEs before TAB (TABs)</span>
+	;; Show SPACEs before TAB (TABs)
 	(list whitespace-space-before-tab-regexp
 	      2 whitespace-space-before-tab t))
        t)))
@@ -2274,7 +2252,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show indentation SPACEs (indent-tabs-mode)</span>
+	;; Show indentation SPACEs (indent-tabs-mode)
 	(list (whitespace-indentation-regexp)
 	      1 whitespace-indentation t))
        t))
@@ -2282,7 +2260,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show indentation SPACEs (SPACEs)</span>
+	;; Show indentation SPACEs (SPACEs)
 	(list (whitespace-indentation-regexp 'tab)
 	      1 whitespace-indentation t))
        t))
@@ -2290,7 +2268,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show indentation SPACEs (TABs)</span>
+	;; Show indentation SPACEs (TABs)
 	(list (whitespace-indentation-regexp 'space)
 	      1 whitespace-indentation t))
        t)))
@@ -2298,14 +2276,14 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show empty lines at beginning of buffer</span>
+	;; Show empty lines at beginning of buffer
 	(list whitespace-empty-at-bob-regexp
 	      1 whitespace-empty t))
        t)
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show empty lines at end of buffer</span>
+	;; Show empty lines at end of buffer
 	(list whitespace-empty-at-eob-regexp
 	      1 whitespace-empty t))
        t))
@@ -2314,7 +2292,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show SPACEs after TAB (indent-tabs-mode)</span>
+	;; Show SPACEs after TAB (indent-tabs-mode)
 	(list (whitespace-space-after-tab-regexp)
 	      1 whitespace-space-after-tab t))
        t))
@@ -2322,7 +2300,7 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show SPACEs after TAB (SPACEs)</span>
+	;; Show SPACEs after TAB (SPACEs)
 	(list (whitespace-space-after-tab-regexp 'tab)
 	      1 whitespace-space-after-tab t))
        t))
@@ -2330,32 +2308,32 @@ resultant list will be returned.</span>"
       (font-lock-add-keywords
        nil
        (list
-	<span class="linecomment">;; Show SPACEs after TAB (TABs)</span>
+	;; Show SPACEs after TAB (TABs)
 	(list (whitespace-space-after-tab-regexp 'space)
 	      1 whitespace-space-after-tab t))
        t)))
-    <span class="linecomment">;; now turn on font lock and highlight blanks</span>
+    ;; now turn on font lock and highlight blanks
     (font-lock-mode 1)))
 
 
 (defun whitespace-color-off ()
-  "<span class="quote">Turn off color visualization.</span>"
-  <span class="linecomment">;; turn off font lock</span>
+  "Turn off color visualization."
+  ;; turn off font lock
   (when (whitespace-style-face-p)
     (font-lock-mode 0)
     (when whitespace-font-lock
       (setq whitespace-font-lock nil
 	    font-lock-keywords   whitespace-font-lock-keywords))
-    <span class="linecomment">;; restore original font lock state</span>
+    ;; restore original font lock state
     (font-lock-mode whitespace-font-lock-mode)))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; Hacked from visws.el (Miles Bader &lt;miles@gnu.org&gt;)</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Hacked from visws.el (Miles Bader <miles@gnu.org>)
 
 
 (defun whitespace-style-mark-p ()
-  "<span class="quote">Return t if there is some visualization via display table.</span>"
+  "Return t if there is some visualization via display table."
   (or (memq 'tab-mark     whitespace-active-style)
       (memq 'space-mark   whitespace-active-style)
       (memq 'newline-mark whitespace-active-style)))
@@ -2368,26 +2346,26 @@ resultant list will be returned.</span>"
 
 
 (defsubst whitespace-char-valid-p (char)
-  <span class="linecomment">;; This check should be improved!!!</span>
-  (or (&lt; char 256)
+  ;; This check should be improved!!!
+  (or (< char 256)
       (whitespace-characterp char)))
 
 
 (defun whitespace-display-vector-p (vec)
-  "<span class="quote">Return true if every character in vector VEC can be displayed.</span>"
+  "Return true if every character in vector VEC can be displayed."
   (let ((i (length vec)))
-    (when (&gt; i 0)
-      (while (and (&gt;= (setq i (1- i)) 0)
+    (when (> i 0)
+      (while (and (>= (setq i (1- i)) 0)
 		  (whitespace-char-valid-p (aref vec i))))
-      (&lt; i 0))))
+      (< i 0))))
 
 
 (defun whitespace-display-char-on ()
-  "<span class="quote">Turn on character display mapping.</span>"
+  "Turn on character display mapping."
   (when (and whitespace-display-mappings
 	     (whitespace-style-mark-p))
     (let (vecs vec)
-      <span class="linecomment">;; Remember whether a buffer has a local display table.</span>
+      ;; Remember whether a buffer has a local display table.
       (unless whitespace-display-table-was-local
 	(setq whitespace-display-table-was-local t
 	      whitespace-display-table
@@ -2395,39 +2373,39 @@ resultant list will be returned.</span>"
       (unless buffer-display-table
 	(setq buffer-display-table (make-display-table)))
       (dolist (entry whitespace-display-mappings)
-	<span class="linecomment">;; check if it is to display this mark</span>
+	;; check if it is to display this mark
 	(when (memq (car entry) whitespace-style)
-	  <span class="linecomment">;; Get a displayable mapping.</span>
+	  ;; Get a displayable mapping.
 	  (setq vecs (cddr entry))
 	  (while (and vecs
 		      (not (whitespace-display-vector-p (car vecs))))
 	    (setq vecs (cdr vecs)))
-	  <span class="linecomment">;; Display a valid mapping.</span>
+	  ;; Display a valid mapping.
 	  (when vecs
 	    (setq vec (copy-sequence (car vecs)))
-	    <span class="linecomment">;; NEWLINE char</span>
+	    ;; NEWLINE char
 	    (when (and (eq (cadr entry) ?\n)
 		       (memq 'newline whitespace-active-style))
-	      <span class="linecomment">;; Only insert face bits on NEWLINE char mapping to avoid</span>
-	      <span class="linecomment">;; obstruction of other faces like TABs and (HARD) SPACEs</span>
-	      <span class="linecomment">;; faces, font-lock faces, etc.</span>
+	      ;; Only insert face bits on NEWLINE char mapping to avoid
+	      ;; obstruction of other faces like TABs and (HARD) SPACEs
+	      ;; faces, font-lock faces, etc.
 	      (dotimes (i (length vec))
-		<span class="linecomment">;; Only for Emacs 21 and 22:</span>
-		<span class="linecomment">;; Due to limitations of glyph representation, the char</span>
-		<span class="linecomment">;; code can not be above ?\x1FFFF.  Probably, this will</span>
-		<span class="linecomment">;; be fixed after Emacs unicode merging.</span>
+		;; Only for Emacs 21 and 22:
+		;; Due to limitations of glyph representation, the char
+		;; code can not be above ?\x1FFFF.  Probably, this will
+		;; be fixed after Emacs unicode merging.
 		(or (eq (aref vec i) ?\n)
-		    (and (&lt; emacs-major-version 23)
-			 (&gt; (aref vec i) #x1FFFF))
+		    (and (< emacs-major-version 23)
+			 (> (aref vec i) #x1FFFF))
 		    (aset vec i
 			  (make-glyph-code (aref vec i)
 					   whitespace-newline)))))
-	    <span class="linecomment">;; Display mapping</span>
+	    ;; Display mapping
 	    (aset buffer-display-table (cadr entry) vec)))))))
 
 
 (defun whitespace-display-char-off ()
-  "<span class="quote">Turn off character display mapping.</span>"
+  "Turn off character display mapping."
   (and whitespace-display-mappings
        (whitespace-style-mark-p)
        whitespace-display-table-was-local
@@ -2435,12 +2413,12 @@ resultant list will be returned.</span>"
 	     buffer-display-table whitespace-display-table)))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
-<span class="linecomment">;;;; Hook</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;; Hook
 
 
 (defun whitespace-action-when-on ()
-  "<span class="quote">Action to be taken always when local whitespace is turned on.</span>"
+  "Action to be taken always when local whitespace is turned on."
   (cond ((memq 'cleanup whitespace-action)
 	 (whitespace-cleanup))
 	((memq 'report-on-bogus whitespace-action)
@@ -2448,35 +2426,35 @@ resultant list will be returned.</span>"
 
 
 (defun whitespace-write-file-hook ()
-  "<span class="quote">Action to be taken when buffer is written.
-It should be added buffer-locally to `write-file-functions'.</span>"
+  "Action to be taken when buffer is written.
+It should be added buffer-locally to `write-file-functions'."
   (cond ((memq 'auto-cleanup whitespace-action)
 	 (whitespace-cleanup))
 	((memq 'abort-on-bogus whitespace-action)
 	 (when (whitespace-report nil t)
-	   (error "<span class="quote">Abort write due to whitespace problems in %s</span>"
+	   (error "Abort write due to whitespace problems in %s"
 		  (buffer-name)))))
-  nil)					<span class="linecomment">; continue hook processing</span>
+  nil)					; continue hook processing
 
 
 (defun whitespace-warn-read-only (msg)
-  "<span class="quote">Warn if buffer is read-only.</span>"
+  "Warn if buffer is read-only."
   (when (memq 'warn-if-read-only whitespace-action)
-    (message "<span class="quote">Can't %s: %s is read-only</span>" msg (buffer-name))))
+    (message "Can't %s: %s is read-only" msg (buffer-name))))
 
  
-<span class="linecomment">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</span>
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 
 (defun whitespace-unload-function ()
-  "<span class="quote">Unload the whitespace library.</span>"
+  "Unload the whitespace library."
   (global-whitespace-mode -1)
-  <span class="linecomment">;; be sure all local whitespace mode is turned off</span>
+  ;; be sure all local whitespace mode is turned off
   (save-current-buffer
     (dolist (buf (buffer-list))
       (set-buffer buf)
       (whitespace-mode -1)))
-  nil)					<span class="linecomment">; continue standard unloading</span>
+  nil)					; continue standard unloading
 
 
 (provide 'whitespace)
@@ -2485,49 +2463,5 @@ It should be added buffer-locally to `write-file-functions'.</span>"
 (run-hooks 'whitespace-load-hook)
 
 
-<span class="linecomment">;; arch-tag: 1b1e2500-dbd4-4a26-8f7a-5a5edfd3c97e</span>
-<span class="linecomment">;;; whitespace.el ends here</span></span></pre></div><div class="wrapper close"></div></div><div class="footer"><hr /><span class="gotobar bar"><a class="local" href="http://www.emacswiki.org/emacs/SiteMap">SiteMap</a> <a class="local" href="http://www.emacswiki.org/emacs/Search">Search</a> <a class="local" href="http://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a class="local" href="http://www.emacswiki.org/emacs/HowTo">HowTo</a> <a class="local" href="http://www.emacswiki.org/emacs/RecentChanges">RecentChanges</a> <a class="local" href="http://www.emacswiki.org/emacs/News">News</a> <a class="local" href="http://www.emacswiki.org/emacs/Problems">Problems</a> <a class="local" href="http://www.emacswiki.org/emacs/Suggestions">Suggestions</a> </span><span class="translation bar"><br />  <a class="translation new" rel="nofollow" href="http://www.emacswiki.org/emacs?action=translate;id=whitespace.el;missing=de_es_fr_it_ja_ko_pt_ru_se_zh">Add Translation</a></span><span class="edit bar"><br /> <a class="edit" accesskey="e" title="Click to edit this page" rel="nofollow" href="http://www.emacswiki.org/emacs?action=edit;id=whitespace.el">Edit this page</a> <a class="history" rel="nofollow" href="http://www.emacswiki.org/emacs?action=history;id=whitespace.el">View other revisions</a> <a class="admin" rel="nofollow" href="http://www.emacswiki.org/emacs?action=admin;id=whitespace.el">Administration</a></span><span class="time"><br /> Last edited 2008-10-20 22:29 UTC by <a class="author" title="from c9522236.virtua.com.br" href="http://www.emacswiki.org/emacs/ViniciusJoseLatorre">ViniciusJoseLatorre</a> <a class="diff" rel="nofollow" href="http://www.emacswiki.org/emacs?action=browse;diff=2;id=whitespace.el">(diff)</a></span><div style="float:right; margin-left:1ex;">
-<!-- Creative Commons License -->
-<a href="http://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border:none" src="/pics/cc-GPL-a.png" /></a>
-<!-- /Creative Commons License -->
-</div>
-
-<!--
-<rdf:RDF xmlns="http://web.resource.org/cc/"
- xmlns:dc="http://purl.org/dc/elements/1.1/"
- xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
-<Work rdf:about="">
-   <license rdf:resource="http://creativecommons.org/licenses/GPL/2.0/" />
-  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
-</Work>
-
-<License rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
-   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
-   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
-   <requires rdf:resource="http://web.resource.org/cc/Notice" />
-   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
-   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
-   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
-</License>
-</rdf:RDF>
--->
-
-<p class="legal">
-This work is licensed to you under version 2 of the
-<a href="http://www.gnu.org/">GNU</a> <a href="/GPL">General Public License</a>.
-Alternatively, you may choose to receive this work under any other
-license that grants the right to use, copy, modify, and/or distribute
-the work, as long as that license imposes the restriction that
-derivative works have to grant the same rights and impose the same
-restriction. For example, you may choose to receive this work under
-the
-<a href="http://www.gnu.org/">GNU</a>
-<a href="/FDL">Free Documentation License</a>, the
-<a href="http://creativecommons.org/">CreativeCommons</a>
-<a href="http://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
-License, the XEmacs manual license, or
-<a href="/OLD">similar licenses</a>.
-</p>
-</div>
-</body>
-</html>
+;; arch-tag: 1b1e2500-dbd4-4a26-8f7a-5a5edfd3c97e
+;;; whitespace.el ends here
