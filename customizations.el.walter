@@ -18,13 +18,15 @@
  '(text-mode-hook (quote (turn-on-flyspell (lambda nil (auto-fill-mode)) auto-detect-longlines)))
  '(transient-mark-mode t)
  '(cc-other-file-alist (quote (("\\.cc\\'" (".hh" ".h")) ("\\.hh\\'" (".cc" ".C")) ("\\.m\\'" (".h")) ("\\.c\\'" (".h")) ("\\.h\\'" (".c" ".cc" ".C" ".CC" ".cxx" ".cpp" ".m")) ("\\.C\\'" (".H" ".hh" ".h")) ("\\.H\\'" (".C" ".CC")) ("\\.CC\\'" (".HH" ".H" ".hh" ".h")) ("\\.HH\\'" (".CC")) ("\\.c\\+\\+\\'" (".h++" ".hh" ".h")) ("\\.h\\+\\+\\'" (".c++")) ("\\.cpp\\'" (".hpp" ".hh" ".h")) ("\\.hpp\\'" (".cpp")) ("\\.cxx\\'" (".hxx" ".hh" ".h")) ("\\.hxx\\'" (".cxx")))))
- '(javascript-indent-level 2))
+ '(javascript-indent-level 2)
+ '(twitter-password "your_twitter_password")
+ '(twitter-username "your_twitter_username"))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
-)
+ '(twitter-header-face ((t (:background "dark blue" :foreground "green")))))
 
 ;; for compatibility with older Aquamacs versions
 (defvar aquamacs-140-custom-file-upgraded t)
