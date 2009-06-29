@@ -9,9 +9,13 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 * where possible use configuration (customization.el and Preferences.el) of Aquamacs to achieve desired result.
 * use elpa package management to acquire third party extensions to emacs
 * use vendor directory for third party code that isn't available any other way
-* use ~/Library/Preferences/Aquamacs Emacs/kit/ for Aquamacs Emacs Starter Kit specific code
+* use ~/Library/Preferences/Aquamacs Emacs/aquamacs-emacs-starter-kit/ for Aquamacs Emacs Starter Kit specific code
 * this starter kit is aimed at Ruby, Ruby on Rails, Xcode, and iPhone development
 * new windows (frames) should be used sparingly ala traditional emacs, in contrast to Aquamacs defaults
+
+I've also never been a Textmate user, so I don't include textmate mode or other the textmate keybindings that may smooth the transition for those that are coming form Textmate. Check out topfunky's for lots of that stuff. Feel free to fork and add them to your fork.
+
+However, I do occasionally include useful features (snippets, etc.) that originated from Textmate. Again, fork and add if you have some.
 
 ## ELPA packages that will be downloaded
 
