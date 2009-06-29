@@ -10,6 +10,17 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 * use elpa package management to acquire third party extensions to emacs
 * use vendor directory for third party code that isn't available any other way
 * use ~/Library/Preferences/Aquamacs Emacs/kit/ for Aquamacs Emacs Starter Kit specific code
+* this starter kit is aimed at Ruby, Ruby on Rails, Xcode, and iPhone development
+* new windows (frames) should be used sparingly ala traditional emacs, in contrast to Aquamacs defaults
+
+## ELPA packages that will be downloaded
+
+* gist -- wrapper for gist API to be integrated with emacs
+* magit -- enhancements for use of git with emacs
+* paredit -- parenthesis matching, nice addition for lisp editing
+* rinari -- enhancements to emacs aimed at Ruby on Rails developers
+* w3 -- lynx-like built in browser for emacs
+* yasnippet-bundle -- snippet functionality ala textmate, including standard distribution of snippets
 
 ## Install
 
@@ -34,38 +45,12 @@ Since this starter kit is aimed at Aquamacs it has a very different project layo
 * optionally set a theme by altering appearance.el to specify either an Aquamacs bundled theme or one included in this kit
 * restart Aquamacs -- Note: you may have to do this more than once to get all the ELPA packages downloaded and compiled
 
+* optional -- use included customizations.el.walter as guide to settings that you can access via Aquamacs menu > Preferences OR (be careful hand editing this, can break things) you can merge them into your ~/Library/Preferences/Aquamacs Emacs/customizations.el file by merging in settings from customizations.el.walter by hand. If merging by hand, make sure to replace the ERC "your..." setting with actual values instead of the included placeholders.
+* restart
+
 ## TODO and Scratch:
 
-enable ido -- done with logical file
-elpa
-        css-mode --handled by aquamacs
-        gist
-        javascript --handled by aquqmacs
-        magit --additional git goodness
-	paredit --for lisp
-        rinari --? support for ri built in?
-        w3
-        yasnippet-bundle -- grab snippets from topfunky?
-Break Preferences.el into logical files -- known stuff done
-vendor -- add under ~/Library/Preferences/Aquamacs Emacs/?
-       applescript-mode --done
-       line-num --done
-       objc-c-mode.el --done
-       xcode.el --done
-       yaml-mode --done
-       htmlize -- use nxHtml instead as htmlize is not currently compatible with emacs 23
-       whitespace --done
-       textmate hooks that open file in emacs?
-       pull some from starter-kit-defuns.el --done
-       starter-kit-elpa
-       pull file ->  mode, nxhtml set up, ido setup from
-       starter-kit-misc if necessary --not really anything that is necessary with aquamacs, except toolbar-mode being turned off
        starter-kit-ruby ri config if necessary
-color-theme already supported in Aquamacs
-            set up preferred theme on load --blackboard
-            investigate twilight
-       color themes --done
-       simple green on black --done
-rinari config
-      tags for projects
+       rinari config
+             tags for projects
 
