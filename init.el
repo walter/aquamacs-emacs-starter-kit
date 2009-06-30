@@ -78,6 +78,7 @@
 (require 'appearance)
 (require 'ido-setup)
 (require 'misc-mode-tweaks)
+(require 'org-mode-stuff)
 (require 'prefer-utf)
 (require 'override-aquamacs-to-be-more-emacsy)
 (require 'useful-functions)
