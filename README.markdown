@@ -29,7 +29,7 @@ However, I do occasionally include useful features (snippets, etc.) that origina
 ## Install
 
 * cd ~/Library/Preferences/Aquamacs Emacs/
-* git clone git@github.com:walter/aquamacs-emacs-starter-kit.git
+* git clone git@github.com/walter/aquamacs-emacs-starter-kit.git
 * add the following to ~/Library/Preferences/Aquamacs Emacs/Preferences.el
 
 <pre>
