@@ -53,8 +53,6 @@ However, I do occasionally include useful features (snippets, etc.) that origina
 * restart
 
 ## TODO and Scratch:
-
-       starter-kit-ruby ri config if necessary
        rinari config
              tags for projects
 
