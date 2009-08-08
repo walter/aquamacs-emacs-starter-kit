@@ -18,6 +18,6 @@
 
 ;; add timestamps to state changes for TODOs
 (setq org-todo-keywords
-       '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@!)" "CANCELED(c@)")))
+       '((sequence "TODO(t!)" "WAIT(w@/!)" "|" "DONE(d@/!)" "CANCELED(c@)")))
 
 (provide 'org-mode-stuff)
