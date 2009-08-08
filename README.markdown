@@ -20,7 +20,7 @@ However, I do occasionally include useful features (snippets, etc.) that origina
 ## ELPA packages that will be downloaded
 
 * gist -- wrapper for gist API to be integrated with emacs
-* magit -- enhancements for use of git with emacs
+* magit -- enhancements for use of git with emacs, see http://zagadka.vm.bytemark.co.uk/magit/magit.html
 * paredit -- parenthesis matching, nice addition for lisp editing
 * rinari -- enhancements to emacs aimed at Ruby on Rails developers
 * w3 -- lynx-like built in browser for emacs
