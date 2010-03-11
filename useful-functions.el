@@ -42,4 +42,7 @@ there's a region, all lines that region covers will be duplicated."
         (setq end (point)))
       (goto-char (+ origin (* (length region) arg) arg)))))
 
+;; map it to keybinding
+(global-set-key (kbd "C-c d") 'duplicate-current-line-or-region)
+
 (provide 'useful-functions)
