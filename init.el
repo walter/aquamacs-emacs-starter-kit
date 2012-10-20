@@ -74,7 +74,9 @@
 ;;;;; end Vendor libs
 
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
+(require 'adjust-tabs)
 (require 'adjust-path)
+(require 'adjust-env)
 (require 'appearance)
 (require 'ido-setup)
 (require 'misc-mode-tweaks)
@@ -82,6 +84,8 @@
 (require 'override-aquamacs-to-be-more-emacsy)
 (require 'prefer-utf)
 (require 'useful-functions)
+(require 'slim-mode)
+(require 'coffee-mode)
 
 ;;;;; end Aquamacs Emacs Starter Kit specific customizations
 
