@@ -32,4 +32,10 @@
 ;; may slow Aquamacs startup
 (require 'ri)
 
+;; turn on whitespace clean up (as per hint in README in coffee-mode)
+(setq whitespace-action '(auto-cleanup)) ;; automatically clean up bad whitespace
+(setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab)) ;; only show bad whitespace
+
+;; make coffee-mode use 2 spaces for indents
+
 (provide 'misc-mode-tweaks)
