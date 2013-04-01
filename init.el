@@ -74,6 +74,7 @@
 ;;;;; end Vendor libs
 
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
+(require 'adjust-shell)
 (require 'adjust-tabs)
 (require 'adjust-path)
 (require 'adjust-env)
