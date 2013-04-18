@@ -4,6 +4,8 @@ Inspired by [Phil Hagelberg's emacs-starter-kit](http://github.com/technomancy/e
 
 Since this starter kit is aimed at Aquamacs it has a very different project layout than Phil Hagelberg's emacs-starter-kit. The Aquamacs Emacs Starter Kit suits the philosophy of Aquamacs to be more Mac like in directory structure. It also slims down the starter kit a lot since Aquamacs already includes many of the same concepts.  This is a new related project, not a fork, and thus code conventions may not be interchangable.
 
+Aquamacs includes a number of "sensible defaults" in addition to what emacs includes. Take a peek into /Applications/Aquamacs.app/Contents/Resources/lisp/ for details (for how to view this via the Finder, see [here](http://www.macosxtips.co.uk/index_files/peek-inside-mac-os-x-packages.php)).
+
 ## Guiding concepts in order of precedence
 
 * where possible use configuration (customization.el and Preferences.el) of Aquamacs to achieve desired result.
