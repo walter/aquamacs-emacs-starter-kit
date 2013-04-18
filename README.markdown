@@ -46,6 +46,12 @@ However, I do occasionally include useful features (snippets, etc.) that origina
 </code>
 </pre>
 
+* for earlier versions of git, you may have to do the following to get submodule code such as coffee-mode:
+
+```
+cd aquamacs-emacs-starter-kit; git submodule init; git submodule update # gets latest code for submodules such as coffee-mode
+```
+
 * optionally set a theme by altering appearance.el to specify either an Aquamacs bundled theme or one included in this kit
 * restart Aquamacs -- Note: you may have to do this more than once to get all the ELPA packages downloaded and compiled
 
