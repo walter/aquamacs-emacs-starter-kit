@@ -4,6 +4,3 @@
 [submodule "vendor/coffee-mode"]
 	path = vendor/coffee-mode
 	url = git://github.com/defunkt/coffee-mode.git
-[submodule "vendor/slim-mode"]
-	path = vendor/slim-mode
-	url = git://github.com/minad/emacs-slim.git
