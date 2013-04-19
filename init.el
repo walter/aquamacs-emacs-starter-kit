@@ -32,6 +32,11 @@
 
 (require 'package)
 (package-initialize)
+
+(when (>= emacs-major-version 24)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  )
+
 (require 'starter-kit-elpa)
 
 ;;;;; Vendor libs
