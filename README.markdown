@@ -2,7 +2,7 @@
 
 ## IMPORTANT NOTE:
 
-The emacs24_with_packages branch is based off Aquamacs development snapshots rather than the stable release. To use Aquamacs stable release, use master branch for this starter kit.
+The emacs_24_and_packages branch is based off Aquamacs nightly development snapshots from the aquamacs24 branch rather than the stable release. To use Aquamacs stable release, use master branch for this starter kit.
 
 Inspired by [Phil Hagelberg's emacs-starter-kit](http://github.com/technomancy/emacs-starter-kit/tree/master) and fork customizations by [Geoffrey Grosenbach (topfunky)](http://github.com/topfunky/emacs-starter-kit/tree/master), but slimmed down for use with the already heavily customized Aquamacs Mac OS X version of emacs.
 

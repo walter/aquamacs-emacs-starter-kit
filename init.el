@@ -22,7 +22,7 @@
 
 (add-to-list 'load-path (concat kitfiles-dir "/vendor"))
 
-;; Load up ELPA, the package manager
+;; Set up package handling
 
 ;; test that ~/.emacs.d
 ;; and ~/.emacs.d/elpa/ exist
@@ -30,14 +30,17 @@
 (unless (file-directory-p "~/.emacs.d/elpa")
 	    (make-directory "~/.emacs.d/elpa" t))
 
-(require 'package)
-(package-initialize)
-
-(when (>= emacs-major-version 24)
-  (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; load packages if we are using emacs 24 or greater
+;; currently using melpa as repository
+(if (>= emacs-major-version 24)
+    (progn (require 'package)
+	   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+	   (package-initialize)
+	   (require 'starter-kit-packages)
+	   (message "Package starter kit loaded")
+	   )
+  (message "Package set up failed: you need to be running Aquamacs that includes emacs 24 or greater")
   )
-
-(require 'starter-kit-elpa)
 
 ;;;;; Vendor libs
 
@@ -46,8 +49,6 @@
 (require 'whitespace)
 
 ;; Additional Modes
-(require 'yaml-mode)                                                                                                        
-(add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
 
 ;; Mac OS X/iPhone oriented, thanks http://github.com/topfunky/emacs-starter-kit/topfunky.el
 ;; Applescript
@@ -84,14 +85,11 @@
 (require 'adjust-path)
 (require 'adjust-env)
 (require 'appearance)
-(require 'coffee-mode)
-(require 'handlebars-mode)
 (require 'ido-setup)
 (require 'misc-mode-tweaks)
 (require 'org-mode-stuff)
 (require 'override-aquamacs-to-be-more-emacsy)
 (require 'prefer-utf)
-(require 'slim-mode)
 (require 'useful-functions)
 
 ;;;;; end Aquamacs Emacs Starter Kit specific customizations
