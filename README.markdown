@@ -19,6 +19,12 @@ I've also never been a Textmate user, so I don't include textmate mode or other 
 
 However, I do occasionally include useful features (snippets, etc.) that originated from Textmate. Again, fork and add if you have some.
 
+## External Required Software
+
+I've switched from bash shell to [zsh](http://www.zsh.org) with [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) (see adjust-shell.el). Adjusting PATH for emacs is now longer necessary as we now pick up the environment from ~/.zshrc (which inturn loads ~/.zshenv for our PATH, etc.).
+
+Also note that [rbenv](http://rbenv.org) along with [ruby-build](https://github.com/sstephenson/ruby-build) is now assumed for managing ruby versions.
+
 ## ELPA packages that will be downloaded
 
 * gist -- wrapper for gist API to be integrated with emacs
