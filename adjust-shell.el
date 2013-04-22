@@ -12,5 +12,6 @@
 ;; 
 ;; (setenv "ESHELL" "/bin/zsh")
 (setenv "ESHELL" "/usr/local/bin/zsh")
+(setenv "SHELL" "/usr/local/bin/zsh")
 
 (provide 'adjust-shell)
