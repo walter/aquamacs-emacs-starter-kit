@@ -29,14 +29,31 @@ I've switched from bash shell to [zsh](http://www.zsh.org) with [oh-my-zsh](http
 
 Also note that [rbenv](http://rbenv.org) along with [ruby-build](https://github.com/sstephenson/ruby-build) is now assumed for managing ruby versions.
 
-## ELPA packages that will be downloaded
+## MELPA packages that will be downloaded
+
+Packages that add features:
 
 * gist -- wrapper for gist API to be integrated with emacs
 * magit -- enhancements for use of git with emacs, see http://zagadka.vm.bytemark.co.uk/magit/magit.html
+* magithub -- adds integration from magit to github
 * paredit -- parenthesis matching, nice addition for lisp editing
 * rinari -- enhancements to emacs aimed at Ruby on Rails developers
-* w3 -- lynx-like built in browser for emacs
-* yasnippet-bundle -- snippet functionality ala textmate, including standard distribution of snippets
+* ruby-electric -- electric editing commands for Ruby files
+* ruby-hash-syntax -- provides ruby-hash-syntax-toggle which converts region between 1.8 and 1.9 hash styles
+* twilight-theme -- popular theme
+* yasnippet -- snippet functionality ala textmate, including standard distribution of snippets
+
+Packages for source code type specific editing modes:
+
+* applescript-mode
+* coffee-mode
+* haml-mode
+* handlebars-mode
+* js2-mode
+* sass-mode
+* scss-mode
+* slim-mode
+* yaml-mode
 
 ## Install
 
