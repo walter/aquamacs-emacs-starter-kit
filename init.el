@@ -48,7 +48,7 @@
 (require 'line-num)
 (require 'whitespace)
 
-;; Additional Modes
+;; Additional modes and mode configuration
 
 ;; Mac OS X/iPhone oriented, thanks http://github.com/topfunky/emacs-starter-kit/topfunky.el
 ;; Applescript
