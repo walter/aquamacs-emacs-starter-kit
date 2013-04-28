@@ -66,6 +66,8 @@
             (hs-minor-mode t)))         ; Hide and show blocks
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
+(add-to-list 'auto-mode-alist '("\\.rjs$" . ruby-mode))
+(add-to-list 'auto-mode-alist '("\\.rxml$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.ru$" . ruby-mode))

@@ -6,15 +6,6 @@
 ;;
 ;; http://github.com/walter/aquamacs-emacs-starter-kit
 
-;; file types that are ruby
-;; credit to technomancy/emacs-starter-kit/starter-kity-ruby.el
-;; for some of these
-(add-to-list 'auto-mode-alist '("\\.rjs$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rxml$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.rake$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("Rakefile$" . ruby-mode))
-(add-to-list 'auto-mode-alist '("\\.gemspec$" . ruby-mode))
-
 ;; most of the time I like ruby-electric, though sometimes it can be a pain
 ;; also adding flymake for syntax checking (also sometimes can be a pain)
 ;; if either is a pain, toggle them off momentarily
