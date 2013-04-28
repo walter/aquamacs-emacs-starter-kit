@@ -16,13 +16,6 @@
             (ruby-electric-mode)
             (flymake-mode-on)))
 
-;; emacs wrapper for ri (replaces old ri.el)
-;; see http://www.emacswiki.org/cgi-bin/wiki/RiEl for details
-;; however, the latest code was grabbed from
-;; http://github.com/technomancy/emacs-starter-kit/(github commit gobbly gook)/elpa-to-submit/ri.el
-;; may slow Aquamacs startup
-(require 'ri)
-
 ;; turn on whitespace clean up (as per hint in README in coffee-mode)
 (setq whitespace-action '(auto-cleanup)) ;; automatically clean up bad whitespace
 (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab)) ;; only show bad whitespace
