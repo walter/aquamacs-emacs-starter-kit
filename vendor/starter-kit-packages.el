@@ -9,7 +9,6 @@
                                    'coffee-mode
                                    'gist
                                    'haml-mode
-                                   'handlebars-mode
                                    'js2-mode
                                    'magit
                                    'magithub
@@ -22,6 +21,7 @@
                                    'scss-mode
                                    'slim-mode
                                    'twilight-theme
+                                   'web-mode
                                    'yaml-mode
                                    'yasnippet)
   "Libraries that should be installed by default.")
