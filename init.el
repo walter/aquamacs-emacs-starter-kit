@@ -47,6 +47,7 @@
 ;; general coding/editing niceties
 (require 'line-num)
 (require 'whitespace)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Additional modes and mode configuration
 
