@@ -72,6 +72,11 @@
             (local-set-key (kbd "C-c <down>")  'hs-show-all)
             (hs-minor-mode t)))         ; Hide and show blocks
 
+;; erc stuff
+(require 'erc-image)
+(add-to-list 'erc-modules 'image)
+(erc-update-modules)
+
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rjs$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rxml$" . ruby-mode))
@@ -89,6 +94,10 @@
 (global-set-key "\C-xt" 'twitter-get-friends-timeline)
 (add-hook 'twitter-status-edit-mode-hook 'longlines-mode)
 
+; use unicode fonts for better support of things like emoji in erc
+(require 'unicode-fonts)
+(unicode-fonts-setup)
+
 ; use web-mode rather than html, nxml modes
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
@@ -102,7 +111,7 @@
 (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
-; yasnippet
+; Yasnippet
 (yas-global-mode 1)
 
 ;;;;; end Vendor libs
