@@ -1,3 +1,6 @@
 [submodule "vendor/twitter"]
 	path = vendor/twitter
 	url = git://git.busydoingnothing.co.uk/twitter.git
+[submodule "vendor/emoticons"]
+	path = vendor/emoticons
+	url = git://github.com/emacsmirror/emoticons.git
