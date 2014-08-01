@@ -5,17 +5,12 @@
 ;; acquired from http://github.com/technomancy/emacs-starter-kit/
 ;; but modified to specify only packages that aren't already bundled with Aquamacs
 ;; and preferred by Walter McGinnis for Rails/Ruby work
-(defvar starter-kit-packages (list 'applescript-mode
-                                   'coffee-mode
+(defvar starter-kit-packages (list 'coffee-mode
                                    'gist
                                    'haml-mode
-                                   'js2-mode
                                    'magit
                                    'magithub
-                                   'paredit
-                                   'rinari
                                    'rspec-mode
-                                   'ruby-electric
                                    'ruby-hash-syntax
                                    'sass-mode
                                    'scss-mode
