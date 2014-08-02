@@ -16,7 +16,7 @@ Aquamacs includes a number of "sensible defaults" in addition to what emacs incl
 * use elpa package management to acquire third party extensions to emacs
 * use vendor directory for third party code that isn't available any other way
 * use ~/Library/Preferences/Aquamacs Emacs/aquamacs-emacs-starter-kit/ for Aquamacs Emacs Starter Kit specific code
-* this starter kit is aimed at Ruby, Ruby on Rails, Xcode, and iPhone development
+* this starter kit is aimed at Ruby, Ruby on Rails, and web development generally (JavaScript, etc.)
 * new windows (frames) should be used sparingly ala traditional emacs, in contrast to Aquamacs defaults
 
 I've also never been a Textmate user, so I don't include textmate mode or other the textmate keybindings that may smooth the transition for those that are coming form Textmate. Check out topfunky's for lots of that stuff. Feel free to fork and add them to your fork.
