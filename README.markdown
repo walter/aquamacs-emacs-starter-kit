@@ -77,7 +77,6 @@ Packages for source code type specific editing modes:
 cd aquamacs-emacs-starter-kit; git submodule init; git submodule update # gets latest code for submodules such as coffee-mode
 ```
 
-* optionally set a theme by altering appearance.el to specify either an Aquamacs bundled theme or one included in this kit
 * restart Aquamacs -- Note: you may have to do this more than once to get all the ELPA packages downloaded and compiled
 
 * optional -- use included customizations.el.walter as guide to settings that you can access via Aquamacs menu > Preferences OR (be careful hand editing this, can break things) you can merge them into your ~/Library/Preferences/Aquamacs Emacs/customizations.el file by merging in settings from customizations.el.walter by hand. If merging by hand, make sure to replace the ERC "your..." setting with actual values instead of the included placeholders.
