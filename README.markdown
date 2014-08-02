@@ -36,7 +36,6 @@ Packages that add features:
 * gist -- wrapper for gist API to be integrated with emacs
 * magit -- enhancements for use of git with emacs, see http://zagadka.vm.bytemark.co.uk/magit/magit.html
 * magithub -- adds integration from magit to github
-* rinari -- enhancements to emacs aimed at Ruby on Rails developers
 * ruby-hash-syntax -- provides ruby-hash-syntax-toggle which converts region between 1.8 and 1.9 hash styles
 * yasnippet -- snippet functionality ala textmate, including standard distribution of snippets
 
@@ -44,8 +43,6 @@ Packages for source code type specific editing modes:
 
 * coffee-mode
 * haml-mode
-* handlebars-mode
-* js2-mode
 * sass-mode
 * scss-mode
 * slim-mode
