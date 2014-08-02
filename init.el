@@ -100,7 +100,7 @@
 (require 'adjust-tabs)
 (require 'adjust-env)
 (require 'appearance)
-;; (require 'ido-setup)
+(require 'ido-setup)
 ;; (require 'misc-mode-tweaks)
 ;; (require 'org-mode-stuff)
 ;; (require 'override-aquamacs-to-be-more-emacsy)
