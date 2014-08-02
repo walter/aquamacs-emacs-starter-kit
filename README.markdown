@@ -80,8 +80,7 @@ cd aquamacs-emacs-starter-kit; git submodule init; git submodule update # gets l
 * restart
 
 ## TODO and Scratch:
-       rinari config
-             tags for projects
+* tags for projects
              
 ## GOTCHAS
 
