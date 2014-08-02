@@ -7,9 +7,11 @@
 ;; and preferred by Walter McGinnis for Rails/Ruby work
 ;; (setq package-load-list '((coffee-mode t)
 ;;                           (erc-image t)
+;;                           (flx-ido t)
 ;;                           (gist t)
 ;;                           (haml-mode t)
 ;;                           (magit t)
+;;                           (projectile-rails t)
 ;;                           (rspec-mode t)
 ;;                           (ruby-hash-syntax t)
 ;;                           (sass-mode t)
