@@ -73,12 +73,6 @@
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
-; see http://www.busydoingnothing.co.uk/twitter-el/ for details
-(autoload 'twitter-get-friends-timeline "twitter" nil t)
-(autoload 'twitter-status-edit "twitter" nil t)
-(global-set-key "\C-xt" 'twitter-get-friends-timeline)
-(add-hook 'twitter-status-edit-mode-hook 'longlines-mode)
-
 ; use unicode fonts for better support of things like emoji in erc
 (require 'unicode-fonts)
 (unicode-fonts-setup)
