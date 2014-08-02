@@ -68,6 +68,8 @@ Packages for source code type specific editing modes:
 </code>
 </pre>
 
+* IMPORTANT (and TEMPORARY): you have to manually run ```M-x package-install``` for every package listed in vendor/starter-kit-packages.el
+
 * for earlier versions of git, you may have to do the following to get submodule code such as coffee-mode:
 
 ```
@@ -81,9 +83,9 @@ cd aquamacs-emacs-starter-kit; git submodule init; git submodule update # gets l
 
 ## TODO and Scratch:
 * tags for projects
-             
+
 ## GOTCHAS
 
-If installing the starter kit causes Acquamacs to crash on launch, it may be because of extra customization files created by other versions of emacs.  By default, Aquamacs checks for customizations in both `~/Library/Preferences/Aquamacs Emacs/Preferences.el` and `~/.emacs.d/init.el` as part of the startup process.  This second file, `~/.emacs.d/init.el`, will only exist if you have previously installed a version of emacs (such as Emacs 24) that uses `init.el` for customizations.  
+If installing the starter kit causes Acquamacs to crash on launch, it may be because of extra customization files created by other versions of emacs.  By default, Aquamacs checks for customizations in both `~/Library/Preferences/Aquamacs Emacs/Preferences.el` and `~/.emacs.d/init.el` as part of the startup process.  This second file, `~/.emacs.d/init.el`, will only exist if you have previously installed a version of emacs (such as Emacs 24) that uses `init.el` for customizations.
 
 Since this starter kit calls `acquamacs-emacs-starter-kit/init.el`, it is necessary to delete or rename any preexisting `./emacs.d/init.el` to avoid collisions.
