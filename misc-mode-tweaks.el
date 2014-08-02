@@ -20,6 +20,4 @@
 (setq whitespace-action '(auto-cleanup)) ;; automatically clean up bad whitespace
 (setq whitespace-style '(trailing space-before-tab indentation empty space-after-tab)) ;; only show bad whitespace
 
-;; make coffee-mode use 2 spaces for indents
-
 (provide 'misc-mode-tweaks)
