@@ -32,15 +32,16 @@
 
 ;; load packages if we are using emacs 24 or greater
 ;; currently using melpa as repository
-;; (if (>= emacs-major-version 24)
-;;     (progn (require 'package)
-;; 	   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-;; 	   (package-initialize)
-;; 	   (require 'starter-kit-packages)
-;; 	   (message "Package starter kit loaded")
-;; 	   )
-;;   (message "Package set up failed: you need to be running Aquamacs that includes emacs 24 or greater")
-;;   )
+(if (>= emacs-major-version 24)
+    (progn (require 'package)
+	   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+     (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+	   (package-initialize)
+;	   (require 'starter-kit-packages)
+	   (message "Package starter kit loaded")
+	   )
+  (message "Package set up failed: you need to be running Aquamacs that includes emacs 24 or greater")
+  )
 
 ;;;;; Vendor libs
 
