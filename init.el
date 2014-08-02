@@ -37,7 +37,7 @@
 	   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
      (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 	   (package-initialize)
-;	   (require 'starter-kit-packages)
+	   (require 'starter-kit-packages)
 	   (message "Package starter kit loaded")
 	   )
   (message "Package set up failed: you need to be running Aquamacs that includes emacs 24 or greater")
@@ -92,7 +92,7 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
 ; Yasnippet
-;; (yas-global-mode 1)
+(yas-global-mode 1)
 
 ;;;;; end Vendor libs
 
