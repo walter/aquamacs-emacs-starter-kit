@@ -98,7 +98,7 @@
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
 (require 'adjust-shell)
 (require 'adjust-tabs)
-;; (require 'adjust-env)
+(require 'adjust-env)
 (require 'appearance)
 ;; (require 'ido-setup)
 ;; (require 'misc-mode-tweaks)
