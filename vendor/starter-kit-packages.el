@@ -9,7 +9,6 @@
                                    'gist
                                    'haml-mode
                                    'magit
-                                   'magithub
                                    'rspec-mode
                                    'ruby-hash-syntax
                                    'sass-mode
