@@ -32,15 +32,15 @@
 
 ;; load packages if we are using emacs 24 or greater
 ;; currently using melpa as repository
-(if (>= emacs-major-version 24)
-    (progn (require 'package)
-	   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-	   (package-initialize)
-	   (require 'starter-kit-packages)
-	   (message "Package starter kit loaded")
-	   )
-  (message "Package set up failed: you need to be running Aquamacs that includes emacs 24 or greater")
-  )
+;; (if (>= emacs-major-version 24)
+;;     (progn (require 'package)
+;; 	   (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; 	   (package-initialize)
+;; 	   (require 'starter-kit-packages)
+;; 	   (message "Package starter kit loaded")
+;; 	   )
+;;   (message "Package set up failed: you need to be running Aquamacs that includes emacs 24 or greater")
+;;   )
 
 ;;;;; Vendor libs
 
@@ -58,9 +58,9 @@
       (cons '("\\.applescript$" . applescript-mode) auto-mode-alist))
 
 ;; erc stuff
-(require 'erc-image)
-(add-to-list 'erc-modules 'image)
-(erc-update-modules)
+;; (require 'erc-image)
+;; (add-to-list 'erc-modules 'image)
+;; (erc-update-modules)
 
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rjs$" . ruby-mode))
@@ -74,8 +74,8 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 ; use unicode fonts for better support of things like emoji in erc
-(require 'unicode-fonts)
-(unicode-fonts-setup)
+;; (require 'unicode-fonts)
+;; (unicode-fonts-setup)
 
 ; use web-mode rather than html, nxml modes
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
@@ -91,22 +91,22 @@
 (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
 
 ; Yasnippet
-(yas-global-mode 1)
+;; (yas-global-mode 1)
 
 ;;;;; end Vendor libs
 
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
 (require 'adjust-shell)
 (require 'adjust-tabs)
-(require 'adjust-path)
-(require 'adjust-env)
+;; (require 'adjust-path)
+;; (require 'adjust-env)
 (require 'appearance)
-(require 'ido-setup)
-(require 'misc-mode-tweaks)
-(require 'org-mode-stuff)
-(require 'override-aquamacs-to-be-more-emacsy)
-(require 'prefer-utf)
-(require 'useful-functions)
+;; (require 'ido-setup)
+;; (require 'misc-mode-tweaks)
+;; (require 'org-mode-stuff)
+;; (require 'override-aquamacs-to-be-more-emacsy)
+;; (require 'prefer-utf)
+;; (require 'useful-functions)
 
 ;;;;; end Aquamacs Emacs Starter Kit specific customizations
 
