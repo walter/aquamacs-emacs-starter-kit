@@ -58,11 +58,6 @@
 (setq auto-mode-alist
       (cons '("\\.applescript$" . applescript-mode) auto-mode-alist))
 
-;; erc stuff
-;; (require 'erc-image)
-;; (add-to-list 'erc-modules 'image)
-;; (erc-update-modules)
-
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rjs$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rxml$" . ruby-mode))
