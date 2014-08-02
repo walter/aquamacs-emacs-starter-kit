@@ -103,7 +103,7 @@
 (require 'ido-setup)
 (require 'misc-mode-tweaks)
 (require 'org-mode-stuff)
-;; (require 'override-aquamacs-to-be-more-emacsy)
+(require 'override-aquamacs-to-be-more-emacsy)
 ;; (require 'prefer-utf)
 ;; (require 'useful-functions)
 
