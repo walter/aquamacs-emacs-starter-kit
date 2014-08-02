@@ -16,6 +16,7 @@
                           (scss-mode t)
                           (slim-mode t)
                           (web-mode t)
+                          (unicode-fonts t)
                           (yaml-mode t)
                           (yasnippet t)))
 

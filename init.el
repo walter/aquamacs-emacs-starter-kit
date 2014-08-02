@@ -69,10 +69,6 @@
 (add-to-list 'auto-mode-alist '("Capfile$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
-; use unicode fonts for better support of things like emoji in erc
-;; (require 'unicode-fonts)
-;; (unicode-fonts-setup)
-
 ; use web-mode rather than html, nxml modes
 (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
