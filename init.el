@@ -57,6 +57,9 @@
 (setq auto-mode-alist
       (cons '("\\.applescript$" . applescript-mode) auto-mode-alist))
 
+;; make github flavored markdown the default for README.md files
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+
 ;; Rake files are ruby, too, as are gemspecs, rackup files, etc.
 (add-to-list 'auto-mode-alist '("\\.rjs$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.rxml$" . ruby-mode))
