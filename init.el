@@ -44,6 +44,12 @@
 
 ;;;;; Vendor libs
 
+;; jscs
+
+(autoload 'jscs-indent-apply "jscs" nil t)
+(autoload 'jscs-fix "jscs" nil t)
+(autoload 'jscs-fix-run-before-save "jscs" nil t)
+
 ;; general coding/editing niceties
 (require 'line-num)
 (require 'whitespace)
@@ -87,6 +93,20 @@
 ; Yasnippet
 (yas-global-mode 1)
 
+; set emoji font for proper emoji display
+(defun --set-emoji-font (frame)
+  "Adjust the font settings of FRAME so Emacs can display emoji properly."
+  (if (eq system-type 'darwin)
+      ;; For NS/Cocoa
+      (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)
+    ;; For Linux
+    (set-fontset-font t 'symbol (font-spec :family "Symbola") frame 'prepend)))
+
+
+; Hook for when a frame is created with emacsclient
+; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Frames.html
+(add-hook 'after-make-frame-functions '--set-emoji-font)
+
 ;;;;; end Vendor libs
 
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
@@ -94,6 +114,7 @@
 (require 'adjust-tabs)
 (require 'adjust-env)
 (require 'appearance)
+(require 'emoji-font-setup)
 (require 'ido-setup)
 (require 'misc-mode-tweaks)
 (require 'org-mode-stuff)
