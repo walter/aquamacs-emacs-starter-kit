@@ -103,6 +103,7 @@
 (require 'adjust-tabs)
 (require 'adjust-env)
 (require 'appearance)
+(require 'company-mode-backends)
 (require 'emoji-font-setup)
 (require 'ido-setup)
 (require 'misc-mode-tweaks)

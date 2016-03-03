@@ -24,7 +24,4 @@
 ; see https://www.gnu.org/software/emacs/manual/html_node/elisp/Creating-Frames.html
 (add-hook 'after-make-frame-functions '--set-emoji-font)
 
-(require 'company-emoji)
-(add-to-list 'company-backends 'company-emoji)
-
 (provide 'emoji-font-setup)

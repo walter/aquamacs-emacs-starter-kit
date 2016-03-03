@@ -8,6 +8,7 @@
 ;; (setq package-load-list '((alchemist t)
 ;;                           (coffee-mode t)
 ;;                           (company-emoji t)
+;;                           (company-web t)
 ;;                           (erc-image t)
 ;;                           (flx-ido t)
 ;;                           (gist t)
