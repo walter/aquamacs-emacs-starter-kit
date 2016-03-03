@@ -6,6 +6,7 @@
 ;; but modified to specify only packages that aren't already bundled with Aquamacs
 ;; and preferred by Walter McGinnis for Rails/Ruby work
 ;; (setq package-load-list '((coffee-mode t)
+;;                           (company-emoji t)
 ;;                           (erc-image t)
 ;;                           (flx-ido t)
 ;;                           (gist t)
