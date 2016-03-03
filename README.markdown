@@ -33,6 +33,8 @@ Also note that [rbenv](http://rbenv.org) along with [ruby-build](https://github.
 
 Packages that add features:
 
+* alchemist -- lots of elixir/phoenix goodies
+* company-emoji -- allows for use of `:emoji-name:` autocomplete via company-mode
 * gist -- wrapper for gist API to be integrated with emacs
 * magit -- enhancements for use of git with emacs, see http://zagadka.vm.bytemark.co.uk/magit/magit.html
 * magithub -- adds integration from magit to github
@@ -47,6 +49,8 @@ Packages for source code type specific editing modes:
 * scss-mode
 * slim-mode
 * yaml-mode
+
+Note that company-mode is turned on globally for its handy autocomplete functionality.
 
 ## Install
 
@@ -80,9 +84,6 @@ cd aquamacs-emacs-starter-kit; git submodule init; git submodule update # gets l
 
 * optional -- use included customizations.el.walter as guide to settings that you can access via Aquamacs menu > Preferences OR (be careful hand editing this, can break things) you can merge them into your ~/Library/Preferences/Aquamacs Emacs/customizations.el file by merging in settings from customizations.el.walter by hand. If merging by hand, make sure to replace the ERC "your..." setting with actual values instead of the included placeholders.
 * restart
-
-## TODO and Scratch:
-* tags for projects
 
 ## GOTCHAS
 
