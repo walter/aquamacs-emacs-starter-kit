@@ -93,6 +93,9 @@
 ; Yasnippet
 (yas-global-mode 1)
 
+; company-mode (http://company-mode.github.io)
+(add-hook 'after-init-hook 'global-company-mode)
+
 ;;;;; end Vendor libs
 
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
