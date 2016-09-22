@@ -78,7 +78,9 @@
 (add-to-list 'auto-mode-alist '("Vagrantfile$" . ruby-mode))
 
 ; use web-mode rather than html, nxml modes
-(add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html.eex\\'" . web-mode))
+(add-to-list 'magic-mode-alist '("^<!DOCTYPE html" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.handlebars\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.hbs\\'" . web-mode))
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -95,6 +97,10 @@
 
 ; company-mode (http://company-mode.github.io)
 (add-hook 'after-init-hook 'global-company-mode)
+
+; alchemist config
+(setq alchemist-mix-test-task "espec")
+(setq alchemist-key-command-prefix (kbd "C-c ,"))
 
 ;;;;; end Vendor libs
 
