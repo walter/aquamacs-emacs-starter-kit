@@ -9,9 +9,11 @@
 ;; set default shell to zsh
 ;; assumes homebrew installed zsh at /usr/local/bin/zsh
 ;; alternatively you can use zsh that comes with Mac OS X
-;; 
+;;
 ;; (setenv "ESHELL" "/bin/zsh")
 (setenv "ESHELL" "/usr/local/bin/zsh")
 (setenv "SHELL" "/usr/local/bin/zsh")
+
+(exec-path-from-shell-initialize)
 
 (provide 'adjust-shell)

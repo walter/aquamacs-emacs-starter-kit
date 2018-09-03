@@ -98,13 +98,10 @@
 ; company-mode (http://company-mode.github.io)
 (add-hook 'after-init-hook 'global-company-mode)
 
-; alchemist config
-(setq alchemist-mix-test-task "espec")
-(setq alchemist-key-command-prefix (kbd "C-c ,"))
-
 ;;;;; end Vendor libs
 
 ;;;;; Aquamacs Emacs Starter Kit specific customizations
+(require 'adjust-alchemist)
 (require 'adjust-shell)
 (require 'adjust-tabs)
 (require 'adjust-env)
@@ -116,6 +113,7 @@
 (require 'org-mode-stuff)
 (require 'override-aquamacs-to-be-more-emacsy)
 (require 'prefer-utf)
+(require 'projectile-set-up)
 (require 'useful-functions)
 
 ;;;;; end Aquamacs Emacs Starter Kit specific customizations
