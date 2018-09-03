@@ -115,6 +115,7 @@
 (require 'prefer-utf)
 (require 'projectile-set-up)
 (require 'useful-functions)
+(require 'adjust-typescript)
 
 ;;;;; end Aquamacs Emacs Starter Kit specific customizations
 

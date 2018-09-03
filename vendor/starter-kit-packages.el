@@ -23,6 +23,8 @@
 ;;                           (scss-mode t)
 ;;                           (slim-mode t)
 ;;                           (smartparens t)
+;;                           (typescript t)
+;;                           (tide t)
 ;;                           (web-mode t)
 ;;                           (unicode-fonts t)
 ;;                           (yaml-mode t)
