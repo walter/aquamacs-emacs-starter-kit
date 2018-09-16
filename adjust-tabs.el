@@ -13,6 +13,7 @@
 ;; seen this both ways, as well as standard-indent 2 in customizations
 (setq-default tab-width 2)
 (setq default-tab-width 2)
+(setq-default typescript-indent-level 2)
 
 ;; web-mode specific overrides of tab settings
 (defun web-mode-hook ()
